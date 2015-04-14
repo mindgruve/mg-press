@@ -1,0 +1,53 @@
+{#
+ # META
+ #
+ #  A template include used to display the default meta data for content.
+ #
+ #  location: views/content/meta.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #}
+
+{# output #}
+{% if post %}
+
+    <div class="meta-info">
+
+        {# post date #}
+        <time class="published" datetime="{{post.post_date}}">
+            <span>{{__("Published", 'theme')}}:</span> {{post.post_date|date(date_format)}}
+        </time>
+
+        {# post author #}
+        <div class="author">
+            <span>{{__("By", 'theme')}}:</span> {{post.author}}
+        </div>
+
+        {# post categories #}
+        {% if post.categories %}
+            <div class="categories">
+                <span>{{__("Categories", 'theme')}}:</span>
+                <ul>
+                    {% for category in post.categories %}
+                        <li><a href="{{category.link}}">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {# post tags #}
+        {% if post.terms('tags') %}
+            <div class="tags">
+                <span>{{__("Tags", 'theme')}}:</span>
+                <ul>
+                    {% for term in post.terms('tags') %}
+                        <li><a href="{{term.link}}">{{term.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+    </div>
+
+{% endif %}

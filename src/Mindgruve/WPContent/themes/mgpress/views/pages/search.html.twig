@@ -1,0 +1,59 @@
+{#
+ # SEARCH
+ #
+ #  The template used to display search results
+ #
+ #  location: views/pages/search.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #
+ #  Template Hierarchy:
+ #   pages/search.html.twig
+ #   content/list.html.twig
+ #
+ #  Context:
+ #   http_host            string
+ #   wp_title             string
+ #   wp_head              TimberFunctionWrapper
+ #   wp_footer            TimberFunctionWrapper
+ #   body_class           string
+ #   site                 TimberSite
+ #   theme                TimberTheme
+ #   theme_dir            string
+ #   language_attributes  TimberFunctionWrapper
+ #   stylesheet_uri       string
+ #   template_uri         string
+ #   posts                array
+ #   pagination           array
+ #   date_format          string
+ #   time_format          string
+ #}
+
+{# parent template #}
+{% extends 'layouts/left-sidebar.html.twig' %}
+
+{# define content block #}
+{% block content %}
+
+    {# search form #}
+    {% include 'includes/search-form.html.twig' %}
+
+    {# content list #}
+    <ul class="content-list search-results">
+        {% for post in posts %}
+            <li>{% include(
+                [
+                    'content/includes/preview-' ~ post.post_type ~ '.html.twig',
+                    'content/includes/preview.html.twig'
+                ]
+            ) %}</li>
+        {% else %}
+            <li>{{__("Sorry, no posts matched your criteria", 'theme')}}</li>
+        {% endfor %}
+    </ul>
+
+    {# pagination #}
+    {% include 'includes/pager.html.twig' %}
+
+{% endblock %}

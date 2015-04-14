@@ -1,0 +1,41 @@
+{#
+ # LEFT SIDEBAR
+ #
+ #  A layout template used for views with a sidebar in the left column.
+ #
+ #  location: views/layouts/left-sidebar.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #}
+
+{# parent template #}
+{% extends 'base.html.twig' %}
+
+{# define body block #}
+{% block body %}
+
+    <div class="">
+
+        <aside>
+
+            {# declare sidebar block #}
+            {% block sidebar %}
+
+                {{dynamic_sidebar('sidebar-primary')}}
+
+            {% endblock %}
+
+        </aside>
+
+        <div id="content" class="">
+
+            {# declare content block #}
+            {% block content %}{% endblock %}
+
+        </div>
+
+    </div>
+    <!-- end div -->
+
+{% endblock %}

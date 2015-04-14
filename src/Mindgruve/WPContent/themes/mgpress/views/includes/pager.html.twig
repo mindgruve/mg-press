@@ -1,0 +1,37 @@
+{#
+ # PAGER
+ #
+ #  A template include used to display next and previous links.
+ #
+ #  location: views/inlcudes/pager.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #}
+
+{# output #}
+{% if pagination and (pagination.prev or pagination.next) %}
+
+    <nav class="post-nav">
+
+        <ul class="pager">
+
+            {% if pagination.prev %}
+                <li class="{{pagination.prev.class}}">
+                    <a href="{{pagination.prev.link}}">{{__("view previous", 'theme')}}</a>
+                </li>
+            {% endif %}
+
+            {% if pagination.next %}
+                <li class="{{pagination.next.class}}">
+                    <a href="{{pagination.next.link}}">{{__("view next", 'theme')}}</a>
+                </li>
+            {% endif %}
+
+        </ul>
+        <!-- end ul.pager -->
+
+    </nav>
+    <!-- end nav.post-nav -->
+
+{% endif %}

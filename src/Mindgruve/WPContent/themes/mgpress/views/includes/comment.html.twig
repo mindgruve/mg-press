@@ -1,0 +1,51 @@
+{#
+ # COMMENTS
+ #
+ #  A template include used to display a single post comment.
+ #
+ #  location: views/inlcudes/comment.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #
+ #  Context:
+ #   comment        TimberComment
+ #   depth          integer
+ #   args           array
+ #   date_format    string
+ #   time_format    string
+ #}
+
+<li {{ function('comment_class', ['comment', 'media', comment.comment_type]) }} id="comment-{{comment.ID}}">
+
+    {# comment avatar #}
+    {% if comment.avatar %}
+        <div class="comment-avatar pull-left">
+
+            {# @todo: remove inline styles #}
+            <img src="{{comment.avatar}}" class="media-object" style="width:60px; height:60px;" />
+        </div>
+    {% endif %}
+
+    {# comment body #}
+    <div class="media-body">
+
+        {# moderation message #}
+        {% if comment.comment_approved == 0 %}
+            <div class="comment-awaiting-moderation">
+                {{ __("Your comment is awaiting moderation.", 'theme') }}
+            </div>
+        {% endif %}
+
+        {# author #}
+        <h5 class="comment-author media-heading">{{comment.author.name}} says</h5>
+
+        {# timestamp #}
+        <time>{{ comment.date|date(date_format ~ ' ' ~ time_format) }}</time>
+
+        {# comment body #}
+        <div class="comment-content">{{comment.comment_content|wpautop}}</div>
+
+    </div>
+
+</li>

@@ -1,0 +1,49 @@
+{#
+ # PREVIEW
+ #
+ #  A template include used to display the default preview for content.
+ #
+ #  location: views/content/preview.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #}
+
+{# thumbnail options #}
+{% set thumbnail_width            = 400 %}
+{% set thumbnail_height           = 300 %}
+
+{# preview options #}
+{% set preview_word_length        = 50 %}
+{% set preview_force_full_excerpt = false %}
+{% set preview_read_more_text     = __("Read More", 'theme') %}
+{% set preview_strip_tags         = true %}
+
+
+{# output #}
+{% if post %}
+
+    <article class="excerpt {{post.class}}">
+
+        {# post header #}
+        <header>
+            <h2 class="title">
+                <a href="{{post.permalink}}">{{post.title}}</a>
+            </h2>
+        </header>
+
+        {# post image #}
+        {% if post.thumbnail %}
+            <a href="{{post.permalink}}">
+                <img src="{{post.get_thumbnail.get_src|resize(thumbnail_width, thumbnail_height)}}" />
+            </a>
+        {% endif %}
+
+        {# post excerpt #}
+        <div class="content">
+            {{post.get_preview(preview_word_length, preview_force_full_excerpt, preview_read_more_text, preview_strip_tags)}}
+        </div>
+
+    </article>
+
+{% endif %}

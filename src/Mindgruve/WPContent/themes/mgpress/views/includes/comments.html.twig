@@ -1,0 +1,46 @@
+{#
+ # COMMENTS
+ #
+ #  A template include used to display post comments.
+ #
+ #  location: views/inlcudes/comments.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #}
+
+<section id="comments">
+    {% if post.comment_count %}
+
+        {# comment count #}
+        <h3>{{ function('_n', "One comment", "%s comments", post.comment_count, 'theme')|format(post.comment_count) }}</h3>
+
+        {# comment list #}
+        <ol class="media-list">
+            {#{ function('wp_list_comments', {'callback' : 'display_comment'}, post.comments) }#}
+            {{ list_comments(post) }}
+        </ol>
+
+        {# comment pager #}
+        {% if function('get_comment_pages_count', post.comments, function('get_option', 'comments_per_page')) > 1 and function('get_option', 'page_comments') %}
+            <nav>
+                <ul class="pager">
+
+                    {% if return_previous_comments_link(post) %}
+                        <li class="previous">{{ return_previous_comments_link(post, __(function('get_option', 'default_comments_page') == 'oldest' ? '&larr; Older comments' : '&larr; Newer comments', 'theme')) }}</li>
+                    {% endif %}
+
+                    {% if return_next_comments_link(post) %}
+                        <li class="next">{{ return_next_comments_link(post, __(function('get_option', 'default_comments_page') == 'oldest' ? 'Newer comments &rarr;' : 'Older comments &rarr;', 'theme')) }}</li>
+                    {% endif %}
+
+
+                </ul>
+            </nav>
+        {% endif %}
+
+    {% endif %}
+</section><!-- /#comments -->
+
+{# comment form #}
+{{comment_form}}

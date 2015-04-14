@@ -1,0 +1,86 @@
+{
+    "name": "mindgruve/mg-press",
+    "description": "Wordpress + Composer + Twig",
+    "authors": [
+        {
+            "name": "Kevin Simpson",
+            "email": "ksimpson@mindgruve.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "wordpress",
+                "type": "webroot",
+                "version": "4.1.1",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/4.1.1.zip"
+                },
+                "require": {
+                    "fancyguy/webroot-installer": "1.0.0"
+                }
+            }
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "wordpress": "4.1.1",
+        "fancyguy/webroot-installer": "1.0.0",
+        "symfony/filesystem": "~2.6",
+        "symfony/finder": "~2.6",
+        "symfony/yaml": "~2.6",
+        "jarednova/timber": "~0.20",
+        "filp/whoops": "~1.0",
+    },
+    "require-dev": {
+        "interconnectit/search-replace-db": "dev-master",
+        "symfony/console": "~2.6",
+        "wp-cli/wp-cli": "~0.18",
+        "symfony/console": "~2.6"
+    },
+    "suggest": {
+        "wpackagist-plugin/regenerate-thumbnails": "Regenerate WordPress thumbnails",
+        "wpackagist-plugin/ninja-forms": "Ninja Forms!",
+        "wpackagist-plugin/featured-galleries": "Adds Featured Galleries for Post Types",
+        "wpackagist-plugin/simple-301-redirects": "Simple 301 Redirects",
+        "wpackagist-plugin/simple-301-redirects-addon-bulk-uploader": "Bulk Uploader for 301 Redirects",
+        "wpackagist-plugin/relevanssi": "Better WordPress Search",
+        "interconnectit/search-replace-db": "Ability to Search/Replace URLs inside of WP Database",
+        "wpackagist-plugin/wordpress-importer": "Ability to import data from another blog"
+    },
+    "extra": {
+        "webroot-dir": "www/wp",
+        "webroot-package": "wordpress",
+        "installer-paths": {
+            "vendor/wpackagist/plugins/{$name}": [
+                "type:wordpress-plugin"
+            ],
+            "vendor/wpackagist/themes/{$name}": [
+                "type:wordpress-theme"
+            ]
+        },
+        "wp-mu-plugins": [
+            "timber"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Mindgruve\\MgPress\\ComposerScripts::setupWordpress"
+        ],
+        "post-update-cmd": [
+            "Mindgruve\\MgPress\\ComposerScripts::setupWordpress"
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+<?php
+
+/** Autoload Composer Vendors */
+require_once( __DIR__ . '/../../vendor/autoload.php');
+
+/**
+ * WordPress Database Table prefix.
+ */
+$table_prefix = 'wp_';
+
+$fs = new Symfony\Component\Filesystem\Filesystem();
+try {
+    $parser     = new Symfony\Component\Yaml\Parser();
+    $config = $parser->parse(file_get_contents(__DIR__ . '/../../config/wpConfig.yml'));
+} catch (Symfony\Component\Yaml\Exception\ParseException $e) {
+    echo 'Unable to parse Wordpress Config';
+    exit();
+}
+
+// load up wordpress config from wpConfig.yml
+foreach($config as $key => $value){
+    define($key, $value);
+}
+
+/* That's all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', dirname(__FILE__));
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');

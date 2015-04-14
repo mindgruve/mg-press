@@ -1,0 +1,35 @@
+{#
+ # SEARCH FORM
+ #
+ #  A template include used to display the site search form.
+ #
+ #  location: views/inlcudes/search-form.html.twig
+ #  author:   kchevalier@mindgruve.com
+ #  twig:     http://twig.sensiolabs.org/documentation
+ #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
+ #}
+
+{# output #}
+<form role="search" method="get" class="search-form" action="{{site.url}}">
+
+    <div class="form-control search-field">
+
+        <label>
+            {{__('Search for', 'theme')}}:
+        </label>
+
+        <input
+            type="search"
+            value="{{(function('is_search') ? function('get_search_query') : '')}}"
+            name="s"
+            placeholder="{{__('Search', 'theme') ~ " " ~ site.name }}"
+        >
+
+    </div>
+    <!-- end div.form-control -->
+
+    <button type="submit" class="search-submit">
+        {{__('Search', 'theme')}}
+    </button>
+
+</form>
