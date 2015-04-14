@@ -12,19 +12,11 @@ class ComposerScripts
     /**
      * @param Event $e
      */
-    static public function postInstall(Event $e)
+    static public function setupWordpress(Event $e)
     {
-        self::symlinkWordpressContent($e);
-        self::generateWordpressConfig($e);
+        self::symlinkWordpressFiles($e);
     }
 
-    /**
-     * @param Event $e
-     */
-    static public function postDeploy(Event $e)
-    {
-        self::generateWordpressConfig($e);
-    }
 
     /**
      * Symlink Wordpress Folders
@@ -33,7 +25,7 @@ class ComposerScripts
      *
      * @param Event $e
      */
-    static public function symlinkWordpressContent(Event $e)
+    static public function symlinkWordpressFiles(Event $e)
     {
         $fs        = new Filesystem();
         $io        = $e->getIO();
@@ -73,16 +65,13 @@ class ComposerScripts
 
             // autogenerating mu-plugin init
             foreach ($muPlugins as $muPlugin) {
-                $file                = __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
-                $data                = self::get_file_data($file);
+                $file         = __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
+                $data         = self::get_file_data($file);
                 $data['plugin_name'] = $muPlugin;
-                $loader              = new \Twig_Loader_Filesystem(__DIR__);
-                $twig                = new \Twig_Environment($loader);
-                $rendered            = $twig->render('mu-plugin-init.php.twig', $data);
-                file_put_contents(
-                    __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/init-' . $muPlugin . '.php',
-                    $rendered
-                );
+                $loader       = new \Twig_Loader_Filesystem(__DIR__);
+                $twig         = new \Twig_Environment($loader);
+                $rendered     = $twig->render('mu-plugin-init.php.twig', $data);
+                file_put_contents(__DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/init-' . $muPlugin . '.php', $rendered);
                 $twig->loadTemplate('mu-plugin-init.php.twig');
             }
 
@@ -91,6 +80,18 @@ class ComposerScripts
                 $fs->mkdir(__DIR__ . '/../../../vendor/wpackagist/themes/');
             }
 
+            // copy wp-config file.
+            $fs->copy(__DIR__ . '/wp-config.php.tmp', __DIR__ . '/../../../www/wp/wp-config.php');
+            $io->write('<info>Copied Wordpress Config Page</info>');
+
+            // copy config dist file
+            $config     = __DIR__ . '/../../../config/wpConfig.yml';
+            $configDist = __DIR__ . '/../../../config/wpConfig.yml.dist';
+            if ($fs->exists($configDist) && !$fs->exists($config)) {
+                $fs->copy($configDist, $config);
+            }
+
+
         } catch (\Exception $e) {
             echo $e->getMessage();
 
@@ -98,24 +99,6 @@ class ComposerScripts
                 '<error>Unable to symlink the plugin and theme directory for WordPress.  You may have to manually symlink these folders</error>'
             );
         }
-    }
-
-    public static function generateWordpressConfig(Event $e)
-    {
-        $fs        = new Filesystem();
-        $io        = $e->getIO();
-        
-        // copy wp-config file.
-        $fs->copy(__DIR__ . '/wp-config.php.tmp', __DIR__ . '/../../../www/wp/wp-config.php');
-
-        // copy config dist file
-        $config     = __DIR__ . '/../../../config/wpConfig.yml';
-        $configDist = __DIR__ . '/../../../config/wpConfig.yml.dist';
-        if ($fs->exists($configDist) && !$fs->exists($config)) {
-            $fs->copy($configDist, $config);
-        }
-
-        $io->write('<info>Copied Wordpress Config Page</info>');
     }
 
     /**
