@@ -5,12 +5,12 @@ Wordpress + Composer + Twig
 ## Installation
   
     1) Install Using Composer
-    composer create-project mindgruve/mg-press path/to/project "~4.1"
+        composer create-project mindgruve/mg-press path/to/project "~4.1"
   
     2) Ignore the following files and directories:
-    application/config/wpConfig.yml
-    www/wp
-    vendor
+        application/config/wpConfig.yml
+        www/wp
+        vendor
   
     3) Update your configuration file located at config/wpConfig.yml with your 
     database parameters, theme name, and updated secure hashes.
