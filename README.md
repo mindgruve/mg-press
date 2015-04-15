@@ -15,11 +15,12 @@ Wordpress + Composer + Twig
     3) Update your configuration file located at config/wpConfig.yml with your 
         database parameters, theme name, and updated secure hashes.
     
-    4) Complete the WP Installation by visiting:
+    4) Complete the WP Installation.  For example, using localhost
         http://localhost/wp/wp-admin/install.php
 
     5) Login to to WP Admin and go to Settings > General
-        update the Site Address (URL) to be http://localhost/
+        update the Site Address (URL) to be at your web root.
+        For example, using localhost your site address setting would be: http://localhost/
       
 
 ## Included Libraries
