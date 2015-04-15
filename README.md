@@ -13,7 +13,7 @@ Wordpress + Composer + Twig
         vendor
   
     3) Update your configuration file located at config/wpConfig.yml with your 
-    database parameters, theme name, and updated secure hashes.
+        database parameters, theme name, and updated secure hashes.
     
     4) Complete the WP Installation by visiting:
         http://localhost/wp/wp-admin/install.php
