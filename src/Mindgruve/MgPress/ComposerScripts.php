@@ -38,7 +38,7 @@ class ComposerScripts
             // symlink wordpress content folder
             $contentPath = __DIR__ . '/../../../www/wp/wp-content';
             $fs->remove(array($contentPath));
-            $newContentPath = '../src/Mindgruve/WPContent';
+            $newContentPath = '../../src/Mindgruve/WPContent';
             $fs->symlink($newContentPath, $contentPath);
             $io->write('<info>Symlinked Wordpress Plugin and Themes</info>');
 
@@ -52,10 +52,10 @@ class ComposerScripts
 
                 $name = $directory->getFilename();
                 if (in_array($name, $muPlugins)) {
-                    $targetPath = __DIR__ . '/../../src/Mindgruve/WPContent/mu-plugins';
+                    $targetPath = __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins';
                     $relPath    = $fs->makePathRelative($directory, $targetPath);
                 } else {
-                    $targetPath = __DIR__ . '/../../src/Mindgruve/WPContent/plugins';
+                    $targetPath = __DIR__ . '/../../../src/Mindgruve/WPContent/plugins';
                     $relPath    = $fs->makePathRelative($directory, $targetPath);
                 }
                 $fs->symlink($relPath, $targetPath . '/' . $name);
@@ -65,13 +65,13 @@ class ComposerScripts
 
             // autogenerating mu-plugin init
             foreach ($muPlugins as $muPlugin) {
-                $file         = __DIR__ . '/../../src/Mindgruve/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
+                $file         = __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
                 $data         = self::get_file_data($file);
                 $data['plugin_name'] = $muPlugin;
                 $loader       = new \Twig_Loader_Filesystem(__DIR__);
                 $twig         = new \Twig_Environment($loader);
                 $rendered     = $twig->render('mu-plugin-init.php.twig', $data);
-                file_put_contents(__DIR__ . '/../../src/Mindgruve/WPContent/mu-plugins/init-' . $muPlugin . '.php', $rendered);
+                file_put_contents(__DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/init-' . $muPlugin . '.php', $rendered);
                 $twig->loadTemplate('mu-plugin-init.php.twig');
             }
 
