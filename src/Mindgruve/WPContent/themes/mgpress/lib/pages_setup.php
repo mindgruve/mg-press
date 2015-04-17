@@ -70,8 +70,8 @@ class MgPageTemplates
 
         // Add your templates to this array.
         $this->templates = array(
-            'pages/home'               => 'Home Page',
-            /** Add More Page Templates Here */
+            'page/home'               => 'Home Page',
+			/** add more pages */
         );
     }
 
