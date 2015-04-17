@@ -71,9 +71,7 @@ class MgPageTemplates
         // Add your templates to this array.
         $this->templates = array(
             'pages/home'               => 'Home Page',
-            'pages/characters'         => 'Game Characters',
-            'pages/media'              => 'Media Gallery',
-            'pages/order'              => 'Order Page'
+            /** Add More Page Templates Here */
         );
     }
 

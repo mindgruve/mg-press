@@ -13,6 +13,8 @@ $theme_includes = array(
   '/lib/widgets.php',          // Widget areas
   '/lib/custom.php',           // Custom scripts
   '/lib/woops_setup.php',      // Woops
+  '/lib/menu_setup.php',       // Menu Setup
+  '/lib/pages_setup.php',      // Pages Setup
 );
 
 foreach($theme_includes as $file){
