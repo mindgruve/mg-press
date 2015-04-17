@@ -5,7 +5,7 @@ Wordpress + Composer + Twig
 ## Installation
   
     1) Install Using Composer
-        composer create-project mindgruve/mg-press path/to/project "~4.1"
+        composer create-project mindgruve/mg-press path/to/project "dev-master"
   
     2) Ignore the following files and directories:
         application/config/wpConfig.yml
