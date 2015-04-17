@@ -2,33 +2,6 @@
  # DETAIL
  #
  #  A template used to display the default content detail view.
- #
- #  location: views/content/detail.html.twig
- #  author:   kchevalier@mindgruve.com
- #  twig:     http://twig.sensiolabs.org/documentation
- #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
- #
- #  Template Hierarchy:
- #   content/detail-{POST_TYPE}.html.twig
- #   content/detail.html.twig
- #
- #  Context:
- #   http_host            string
- #   wp_title             string
- #   wp_head              TimberFunctionWrapper
- #   wp_footer            TimberFunctionWrapper
- #   body_class           string
- #   site                 TimberSite
- #   theme                TimberTheme
- #   theme_dir            string
- #   language_attributes  TimberFunctionWrapper
- #   stylesheet_uri       string
- #   template_uri         string
- #   posts                TimberQueryIterator
- #   post                 TimberPost
- #   comment_form         string
- #   date_format          string
- #   time_format          string
  #}
 
 {# thumbnail options #}
@@ -57,8 +30,8 @@
                 {# post meta info #}
                 {% include(
                     [
-                        'content/includes/meta-' ~ post.post_type ~ '.html.twig',
-                        'content/includes/meta.html.twig'
+                        'single/includes/meta-' ~ post.post_type ~ '.html.twig',
+                        'single/includes/meta.html.twig'
                     ]
                 ) %}
 

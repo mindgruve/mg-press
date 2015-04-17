@@ -64,7 +64,7 @@ function list_comments($post) {
 }
 
 // Create a timber function wrapper for list comments
-TimberHelper::function_wrapper('list_comments', null, true);
+TimberHelper::function_wrapper('list_comments', array(), true);
 
 /**
  * Return Previous Comments Link

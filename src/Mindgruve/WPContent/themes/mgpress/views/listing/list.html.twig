@@ -1,7 +1,8 @@
 {#
- # SEARCH
+ # LIST
  #
- #  The template used to display search results
+ #  A template used to display a default list of content.
+ #  Used for index, archive, search results.
  #}
 
 {# parent template #}
@@ -10,16 +11,16 @@
 {# define content block #}
 {% block content %}
 
-    {# search form #}
-    {% include 'includes/search-form.html.twig' %}
+    {# title #}
+    {% include 'includes/list-title.html.twig' %}
 
     {# content list #}
-    <ul class="content-list search-results">
+    <ul class="content-list">
         {% for post in posts %}
             <li>{% include(
                 [
-                    'content/includes/preview-' ~ post.post_type ~ '.html.twig',
-                    'content/includes/preview.html.twig'
+                    'preview/preview-' ~ post.post_type ~ '.html.twig',
+                    'preview/preview.html.twig'
                 ]
             ) %}</li>
         {% else %}

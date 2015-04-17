@@ -1,0 +1,46 @@
+{#
+ # DETAIL
+ #
+ #  A template used to display the default content detail view.
+ #}
+
+{# thumbnail options #}
+{% set thumbnail_width   = 600 %}
+{% set thumbnail_height  = 400 %}
+
+
+{# parent template #}
+{% extends 'layouts/left-sidebar.html.twig' %}
+
+{# define content block #}
+{% block content %}
+
+    {% if post %}
+
+        <article class="detail {{post.class}}">
+
+            {# post header #}
+            <header>
+
+                {# post title #}
+                <h1 class="title">
+                    {{post.title}}
+                </h1>
+
+            </header>
+
+            {# post image #}
+            {% if post.thumbnail %}
+                <img src="{{post.get_thumbnail.get_src|resize(thumbnail_width, thumbnail_height)}}" />
+            {% endif %}
+
+            {# post content #}
+            <div class="content">
+                {{post.content}}
+            </div>
+
+        </article>
+
+    {% endif %}
+
+{% endblock %}

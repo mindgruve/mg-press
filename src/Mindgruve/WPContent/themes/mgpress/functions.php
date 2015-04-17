@@ -12,6 +12,7 @@ $theme_includes = array(
   '/lib/comments.php',         // Comments
   '/lib/widgets.php',          // Widget areas
   '/lib/custom.php',           // Custom scripts
+  '/lib/woops_setup.php',      // Woops
 );
 
 foreach($theme_includes as $file){

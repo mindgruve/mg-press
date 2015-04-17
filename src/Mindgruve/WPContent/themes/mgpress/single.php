@@ -10,8 +10,8 @@ $data['time_format']  = get_option('time_format');
 // render template
 Timber::render(
     array(
-        'content/detail-' . get_post_type() . '.html.twig',
-        'content/detail.html.twig',
+        'single/detail-' . get_post_type() . '.html.twig',
+        'single/detail.html.twig',
     ),
     $data
 );

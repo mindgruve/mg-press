@@ -11,8 +11,8 @@ $data['time_format']  = get_option('time_format');
 Timber::render(
     array(
         'pages/' . $data['post']->post_name . '.html.twig',
-        'content/detail-' . get_post_type() . '.html.twig',
-        'content/detail.html.twig',
+        'single/detail-' . get_post_type() . '.html.twig',
+        'single/detail.html.twig',
     ),
     $data
 );

@@ -2,18 +2,6 @@
  # COMMENTS
  #
  #  A template include used to display a single post comment.
- #
- #  location: views/inlcudes/comment.html.twig
- #  author:   kchevalier@mindgruve.com
- #  twig:     http://twig.sensiolabs.org/documentation
- #  timber:   https://github.com/jarednova/timber/wiki/WP-Integration
- #
- #  Context:
- #   comment        TimberComment
- #   depth          integer
- #   args           array
- #   date_format    string
- #   time_format    string
  #}
 
 <li {{ function('comment_class', ['comment', 'media', comment.comment_type]) }} id="comment-{{comment.ID}}">
