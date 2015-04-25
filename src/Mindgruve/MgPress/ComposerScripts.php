@@ -12,7 +12,15 @@ class ComposerScripts
     /**
      * @param Event $e
      */
-    static public function setupWordpress(Event $e)
+    static public function updateWordpress(Event $e)
+    {
+        self::symlinkWordpressFiles($e);
+    }
+
+    /**
+     * @param Event $e
+     */
+    static public function installWordpress(Event $e)
     {
         self::symlinkWordpressFiles($e);
     }
@@ -65,13 +73,16 @@ class ComposerScripts
 
             // autogenerating mu-plugin init
             foreach ($muPlugins as $muPlugin) {
-                $file         = __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
-                $data         = self::get_file_data($file);
+                $file                = __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
+                $data                = self::get_file_data($file);
                 $data['plugin_name'] = $muPlugin;
-                $loader       = new \Twig_Loader_Filesystem(__DIR__);
-                $twig         = new \Twig_Environment($loader);
-                $rendered     = $twig->render('mu-plugin-init.php.twig', $data);
-                file_put_contents(__DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/init-' . $muPlugin . '.php', $rendered);
+                $loader              = new \Twig_Loader_Filesystem(__DIR__);
+                $twig                = new \Twig_Environment($loader);
+                $rendered            = $twig->render('mu-plugin-init.php.twig', $data);
+                file_put_contents(
+                    __DIR__ . '/../../../src/Mindgruve/WPContent/mu-plugins/init-' . $muPlugin . '.php',
+                    $rendered
+                );
                 $twig->loadTemplate('mu-plugin-init.php.twig');
             }
 
@@ -100,6 +111,33 @@ class ComposerScripts
             );
         }
     }
+
+    public static function upgradeWordpressDB(Event $e)
+    {
+        $io = $e->getIO();
+
+        $_SERVER = array(
+            "HTTP_HOST"       => 'localhost',
+            "SCRIPT_FILENAME" => realpath(__DIR__ . '/../../../www/wp/wp-admin/includes/upgrade.php'),
+            "SCRIPT_NAME"     => '/wp/wp-admin/includes/upgrade.php',
+            "PHP_SELF"        => '/wp/wp-admin/includes/upgrade.php',
+            "REQUEST_URI"     => "/",
+            "REQUEST_METHOD"  => "GET"
+        );
+
+        include_once(__DIR__ . '/../../../www/wp/wp-load.php');
+        include_once(__DIR__ . '/../../../www/wp/wp-admin/includes/upgrade.php');
+
+        $io->write('<info>Starting to upgrade WordPress Database</info>');
+        try {
+            \wp_upgrade();
+        } catch (\Exception $e) {
+            $io->write('<error>Unable to upgrade wordpress</error>');
+            return;
+        }
+        $io->write('<info>WordPress Upgrade Complete!</info>');
+    }
+
 
     /**
      * Read Comments from Plugin
@@ -147,4 +185,4 @@ class ComposerScripts
 
         return $default_headers;
     }
-} 
+}
