@@ -46,3 +46,9 @@ src/Mindgruve/WPContent/mu-plugins
 src/Mindgruve/WPContent/themes   
 www/wp  
 vendor 
+
+## Upgrading WordPress
+  composer update wordpress
+  composer update-wp-db
+
+
