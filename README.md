@@ -48,7 +48,8 @@ www/wp
 vendor 
 
 ## Upgrading WordPress
-  composer update wordpress
-  composer update-wp-db
+
+    composer update wordpress
+    composer update-wp-db
 
 
