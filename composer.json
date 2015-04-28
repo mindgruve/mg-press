@@ -81,6 +81,9 @@
         ],
         "post-update-cmd": [
             "Mindgruve\\MgPress\\ComposerScripts::setupWordpress"
+        ],
+        "update-wp-db": [
+          "Mindgruve\\MgPress\\ComposerScripts::upgradeWordpressDB"
         ]
     }
 }
