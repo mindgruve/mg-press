@@ -42,7 +42,8 @@
         "symfony/finder": "~2.6",
         "symfony/yaml": "~2.6",
         "jarednova/timber": "~0.20",
-        "filp/whoops": "~1.0"
+        "filp/whoops": "~1.0",
+        "dannyvankooten/php-router": "dev-master"
     },
     "require-dev": {
         "interconnectit/search-replace-db": "dev-master",
