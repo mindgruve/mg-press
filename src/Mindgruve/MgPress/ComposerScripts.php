@@ -28,8 +28,8 @@ class ComposerScripts
 
     /**
      * Symlink Wordpress Folders
-     * www/wp/wp-content/plugins -> plugins
-     * www/wp/wp-contnet/themes  -> themes
+     * web/wp/wp-content/plugins -> plugins
+     * web/wp/wp-contnet/themes  -> themes
      *
      * @param Event $e
      */
@@ -44,7 +44,7 @@ class ComposerScripts
         try {
 
             // symlink wordpress content folder
-            $contentPath = __DIR__ . '/../../../www/wp/wp-content';
+            $contentPath = __DIR__ . '/../../../web/wp/wp-content';
             $fs->remove(array($contentPath));
             $newContentPath = '../../src/Mindgruve/WPContent';
             $fs->symlink($newContentPath, $contentPath);
@@ -92,7 +92,7 @@ class ComposerScripts
             }
 
             // copy wp-config file.
-            $fs->copy(__DIR__ . '/wp-config.php.tmp', __DIR__ . '/../../../www/wp/wp-config.php');
+            $fs->copy(__DIR__ . '/wp-config.php.tmp', __DIR__ . '/../../../web/wp/wp-config.php');
             $io->write('<info>Copied Wordpress Config Page</info>');
 
             // copy config dist file
@@ -118,15 +118,15 @@ class ComposerScripts
 
         $_SERVER = array(
             "HTTP_HOST"       => 'localhost',
-            "SCRIPT_FILENAME" => realpath(__DIR__ . '/../../../www/wp/wp-admin/includes/upgrade.php'),
+            "SCRIPT_FILENAME" => realpath(__DIR__ . '/../../../web/wp/wp-admin/includes/upgrade.php'),
             "SCRIPT_NAME"     => '/wp/wp-admin/includes/upgrade.php',
             "PHP_SELF"        => '/wp/wp-admin/includes/upgrade.php',
             "REQUEST_URI"     => "/",
             "REQUEST_METHOD"  => "GET"
         );
 
-        include_once(__DIR__ . '/../../../www/wp/wp-load.php');
-        include_once(__DIR__ . '/../../../www/wp/wp-admin/includes/upgrade.php');
+        include_once(__DIR__ . '/../../../web/wp/wp-load.php');
+        include_once(__DIR__ . '/../../../web/wp/wp-admin/includes/upgrade.php');
 
         $io->write('<info>Starting to upgrade WordPress Database</info>');
         try {
