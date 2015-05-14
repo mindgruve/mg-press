@@ -1,6 +1,7 @@
 {
     "name": "mindgruve/mg-press",
     "description": "Wordpress + Composer + Twig",
+    "license": "MIT",
     "authors": [
         {
             "name": "Kevin Simpson",
