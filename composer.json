@@ -8,7 +8,6 @@
             "email": "ksimpson@mindgruve.com"
         }
     ],
-    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "composer",
@@ -62,7 +61,7 @@
         "wpackagist-plugin/wordpress-importer": "Ability to import data from another blog"
     },
     "extra": {
-        "webroot-dir": "www/wp",
+        "webroot-dir": "web/wp",
         "webroot-package": "wordpress",
         "installer-paths": {
             "vendor/wpackagist/plugins/{$name}": [
