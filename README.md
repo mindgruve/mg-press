@@ -45,7 +45,7 @@ For example if you had the following entries in your wpConfig.yml..
 Then the environmental variables DATABASE\_NAME, DATABASE\_USER, DATABASE\_PASSWORD, and DATABASE\_HOST will be used.
 
 ## Included Libraries
-Wordpress 4.1.1 - https://wordpress.org/   
+Wordpress 4.2.2 - https://wordpress.org/   
 Timber - http://upstatement.com/timber/   
 Twig - http://twig.sensiolabs.org/   
 Symfony YAML - http://symfony.com/doc/current/components/yaml/introduction.html   
