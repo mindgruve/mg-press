@@ -1,0 +1,4 @@
+vendor/*
+.idea/*
+web/wp/*
+!web/wp/.gitkeep

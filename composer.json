@@ -51,16 +51,6 @@
         "wp-cli/wp-cli": "~0.18",
         "symfony/console": "~2.6"
     },
-    "suggest": {
-        "wpackagist-plugin/regenerate-thumbnails": "Regenerate WordPress thumbnails",
-        "wpackagist-plugin/ninja-forms": "Ninja Forms!",
-        "wpackagist-plugin/featured-galleries": "Adds Featured Galleries for Post Types",
-        "wpackagist-plugin/simple-301-redirects": "Simple 301 Redirects",
-        "wpackagist-plugin/simple-301-redirects-addon-bulk-uploader": "Bulk Uploader for 301 Redirects",
-        "wpackagist-plugin/relevanssi": "Better WordPress Search",
-        "interconnectit/search-replace-db": "Ability to Search/Replace URLs inside of WP Database",
-        "wpackagist-plugin/wordpress-importer": "Ability to import data from another blog"
-    },
     "extra": {
         "webroot-dir": "web/wp",
         "webroot-package": "wordpress",
