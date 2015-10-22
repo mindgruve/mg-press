@@ -113,15 +113,9 @@ class ComposerScripts
             if ($fs->exists($configDist) && !$fs->exists($config)) {
                 $finalConfig = array();
 
-            } else {
-                $finalConfig = $parser->parse(file_get_contents($config));
-            }
-
-            /**
-             * Generate API
-             */
-            $generate = $io->ask('<question>Do you want to regenerate Wordpress security tokens</question> (y/n)?');
-            if($generate == 'y'){
+                /**
+                 * Generate API
+                 */
                 $wpApi = file_get_contents('https://api.wordpress.org/secret-key/1.1/salt/');
                 preg_match_all('/define\(\'(.*)\'\,(.*)\'(.*)\'\);/', $wpApi, $matches);
                 $wpApiKeys = $matches[1];
@@ -132,7 +126,12 @@ class ComposerScripts
                         $finalConfig['parameters'][$key] = $wpApiValues[$index];
                     }
                 }
+
+            } else {
+                $finalConfig = $parser->parse(file_get_contents($config));
             }
+
+
 
             foreach ($configDistValues['parameters'] as $key => $value) {
                 if (!isset($finalConfig['parameters'][$key])) {
