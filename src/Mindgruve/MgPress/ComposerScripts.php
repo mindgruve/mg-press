@@ -5,6 +5,8 @@ namespace Mindgruve\MgPress;
 use Symfony\Component\Filesystem\Filesystem;
 use Composer\Script\Event;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Yaml\Parser;
+use Symfony\Component\Yaml\Yaml;
 
 class ComposerScripts
 {
@@ -35,10 +37,10 @@ class ComposerScripts
      */
     static public function symlinkWordpressFiles(Event $e)
     {
-        $fs        = new Filesystem();
-        $io        = $e->getIO();
-        $finder    = new Finder();
-        $extra     = $e->getComposer()->getPackage()->getExtra();
+        $fs = new Filesystem();
+        $io = $e->getIO();
+        $finder = new Finder();
+        $extra = $e->getComposer()->getPackage()->getExtra();
         $muPlugins = isset($extra['wp-mu-plugins']) ? $extra['wp-mu-plugins'] : array();
 
         try {
@@ -61,10 +63,10 @@ class ComposerScripts
                 $name = $directory->getFilename();
                 if (in_array($name, $muPlugins)) {
                     $targetPath = __DIR__ . '/../../../src/Wordpress/WPContent/mu-plugins';
-                    $relPath    = $fs->makePathRelative($directory, $targetPath);
+                    $relPath = $fs->makePathRelative($directory, $targetPath);
                 } else {
                     $targetPath = __DIR__ . '/../../../src/Wordpress/WPContent/plugins';
-                    $relPath    = $fs->makePathRelative($directory, $targetPath);
+                    $relPath = $fs->makePathRelative($directory, $targetPath);
                 }
                 $fs->symlink($relPath, $targetPath . '/' . $name);
             }
@@ -73,12 +75,12 @@ class ComposerScripts
 
             // autogenerating mu-plugin init
             foreach ($muPlugins as $muPlugin) {
-                $file                = __DIR__ . '/../../../src/Wordpress/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
-                $data                = self::get_file_data($file);
+                $file = __DIR__ . '/../../../src/Wordpress/WPContent/mu-plugins/' . $muPlugin . '/' . $muPlugin . '.php';
+                $data = self::get_file_data($file);
                 $data['plugin_name'] = $muPlugin;
-                $loader              = new \Twig_Loader_Filesystem(__DIR__);
-                $twig                = new \Twig_Environment($loader);
-                $rendered            = $twig->render('mu-plugin-init.php.twig', $data);
+                $loader = new \Twig_Loader_Filesystem(__DIR__);
+                $twig = new \Twig_Environment($loader);
+                $rendered = $twig->render('mu-plugin-init.php.twig', $data);
                 file_put_contents(
                     __DIR__ . '/../../../src/Wordpress/WPContent/mu-plugins/init-' . $muPlugin . '.php',
                     $rendered
@@ -95,13 +97,65 @@ class ComposerScripts
             $fs->copy(__DIR__ . '/wp-config.php.tmp', __DIR__ . '/../../../web/wp/wp-config.php');
             $io->write('<info>Copied Wordpress Config Page</info>');
 
+            /**
+             * Create wpConfig.yml
+             */
+
             // copy config dist file
-            $config     = __DIR__ . '/../../../config/wpConfig.yml';
+            $config = __DIR__ . '/../../../config/wpConfig.yml';
             $configDist = __DIR__ . '/../../../config/wpConfig.yml.dist';
+
+            $parser = new Parser();
+            $configDistValues = $parser->parse(file_get_contents($configDist));
+
+            $io->write('<info>Creating config...</info>');
+
             if ($fs->exists($configDist) && !$fs->exists($config)) {
-                $fs->copy($configDist, $config);
+                $finalConfig = array();
+
+            } else {
+                $finalConfig = $parser->parse(file_get_contents($config));
             }
 
+            /**
+             * Generate API
+             */
+            $generate = $io->ask('<question>Do you want to regenerate Wordpress security tokens</question> (y/n)?');
+            if($generate == 'y'){
+                $wpApi = file_get_contents('https://api.wordpress.org/secret-key/1.1/salt/');
+                preg_match_all('/define\(\'(.*)\'\,(.*)\'(.*)\'\);/', $wpApi, $matches);
+                $wpApiKeys = $matches[1];
+                $wpApiValues = $matches[3];
+
+                foreach ($wpApiKeys as $index => $key) {
+                    if (isset($configDistValues['parameters'][$key])) {
+                        $finalConfig['parameters'][$key] = $wpApiValues[$index];
+                    }
+                }
+            }
+
+            foreach ($configDistValues['parameters'] as $key => $value) {
+                if (!isset($finalConfig['parameters'][$key])) {
+
+                    if ($value === true) {
+                        $defaultValue = 'true';
+                    } elseif ($value === false) {
+                        $defaultValue = 'false';
+                    } elseif(is_null($value)){
+                        $defaultValue = 'null';
+                    } else {
+                        $defaultValue = '\''.$value.'\'';
+                    }
+
+                    $repliedValue = $io->ask('<question>' . $key . '</question> (<comment>' . $defaultValue . '</comment>)  ');
+                    if ($repliedValue) {
+                        $value = $repliedValue;
+                    }
+                    $finalConfig['parameters'][$key] = $value;
+                }
+            }
+
+            file_put_contents($config, "# This file is auto-generated during the composer install\n" . Yaml::dump($finalConfig, 99));
 
         } catch (\Exception $e) {
             echo $e->getMessage();
@@ -117,12 +171,12 @@ class ComposerScripts
         $io = $e->getIO();
 
         $_SERVER = array(
-            "HTTP_HOST"       => 'localhost',
+            "HTTP_HOST" => 'localhost',
             "SCRIPT_FILENAME" => realpath(__DIR__ . '/../../../web/wp/wp-admin/includes/upgrade.php'),
-            "SCRIPT_NAME"     => '/wp/wp-admin/includes/upgrade.php',
-            "PHP_SELF"        => '/wp/wp-admin/includes/upgrade.php',
-            "REQUEST_URI"     => "/",
-            "REQUEST_METHOD"  => "GET"
+            "SCRIPT_NAME" => '/wp/wp-admin/includes/upgrade.php',
+            "PHP_SELF" => '/wp/wp-admin/includes/upgrade.php',
+            "REQUEST_URI" => "/",
+            "REQUEST_METHOD" => "GET"
         );
 
         include_once(__DIR__ . '/../../../web/wp/wp-load.php');
@@ -149,17 +203,17 @@ class ComposerScripts
     public static function get_file_data($file, $context = '')
     {
         $default_headers = array(
-            'Name'        => 'Plugin Name',
-            'PluginURI'   => 'Plugin URI',
-            'Version'     => 'Version',
+            'Name' => 'Plugin Name',
+            'PluginURI' => 'Plugin URI',
+            'Version' => 'Version',
             'Description' => 'Description',
-            'Author'      => 'Author',
-            'AuthorURI'   => 'Author URI',
-            'TextDomain'  => 'Text Domain',
-            'DomainPath'  => 'Domain Path',
-            'Network'     => 'Network',
+            'Author' => 'Author',
+            'AuthorURI' => 'Author URI',
+            'TextDomain' => 'Text Domain',
+            'DomainPath' => 'Domain Path',
+            'Network' => 'Network',
             // Site Wide Only is deprecated in favor of Network.
-            '_sitewide'   => 'Site Wide Only',
+            '_sitewide' => 'Site Wide Only',
         );
 
 
