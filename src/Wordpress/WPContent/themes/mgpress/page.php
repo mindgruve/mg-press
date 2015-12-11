@@ -8,7 +8,7 @@ $data['date_format']  = get_option('date_format');
 $data['time_format']  = get_option('time_format');
 
 $templateName = $data['page']->get_field('_wp_page_template') ? $data['page']->get_field('_wp_page_template') : null;
-$controller = dirname(__FILE__) . '/controllers/' . $templateName . '.php';
+$controller = dirname(__FILE__) . '/controllers/page/' . $templateName . '.php';
 if ($templateName && file_exists($controller)) {
     include_once($controller);
 }
