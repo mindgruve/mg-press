@@ -1,11 +1,27 @@
 <?php
 /**
- * Front to the WordPress application. This file doesn't do anything, but loads
- * wp-blog-header.php which does and tells WordPress to load the theme.
+ * Caching Adapter
+ *
  *
  * @package WordPress
  */
 
-/** Loads the WordPress Environment and Template */
-require( dirname( __FILE__ ) . '/wp/wp-blog-header.php' );
+include_once(__DIR__ . '/../vendor/autoload.php');
 
+use Symfony\Component\HttpKernel\HttpCache\Store;
+use Mindgruve\ReverseProxy\CachedReverseProxy;
+use Mindgruve\ReverseProxy\Adapters\WordPressAdapter;
+
+$store = new Store(dirname(__FILE__) . '/wp/wp-content/cache');
+$reverseProxy = new CachedReverseProxy(
+    new WordPressAdapter(
+        function () {
+
+            // Bootstrap Wordpress
+            require(dirname(__FILE__) . '/wp/wp-blog-header.php');
+
+        }
+        , 900, $store
+    )
+);
+$reverseProxy->run();
