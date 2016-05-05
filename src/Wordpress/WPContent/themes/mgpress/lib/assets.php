@@ -41,7 +41,7 @@ function add_stylesheet($handle, $src, $deps = array(), $ver = null, $media = nu
 }
 
 // Create a timber function wrapper for add stylesheet
-TimberHelper::function_wrapper('add_stylesheet', null, false);
+TimberHelper::function_wrapper('add_stylesheet', array(), false);
 
 /**
  * Add Script File
@@ -67,7 +67,7 @@ function add_script_file($handle, $src, $deps = array(), $ver = null, $in_footer
 }
 
 // Create a timber function wrapper for add script file
-TimberHelper::function_wrapper('add_script_file', null, false);
+TimberHelper::function_wrapper('add_script_file', array(), false);
 
 /**
  * Localize Script
@@ -82,7 +82,7 @@ function localize_script($handle, $name, $data) {
 }
 
 // Create a timber function wrapper for add script file
-TimberHelper::function_wrapper('localize_script', null, false);
+TimberHelper::function_wrapper('localize_script', array(), false);
 
 
 // Theme scripts
