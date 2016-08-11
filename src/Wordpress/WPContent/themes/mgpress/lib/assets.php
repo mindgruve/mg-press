@@ -127,8 +127,10 @@ function timber_enqueue_styles() {
 
     global $timberStylesheets;
 
-    usort($timberStylesheets, 'sortScriptsByPriority');
-
+    if (count($timberStylesheets)) {
+        usort($timberStylesheets, 'sortScriptsByPriority');
+    }
+    
     if (count($timberStylesheets)) {
         foreach ($timberStylesheets as $key => $timberStylesheet) {
             wp_register_style($timberStylesheet[0], $timberStylesheet[1], $timberStylesheet[4], $timberStylesheet[5],
