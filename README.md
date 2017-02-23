@@ -1,6 +1,7 @@
 # mg-press
 Wordpress + Composer + Twig
 
+TEST
 
 ## Installation
   
