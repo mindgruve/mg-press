@@ -42,16 +42,28 @@ class MgPageTemplates
         $this->templates = array();
 
         // Add a filter to the attributes metabox to inject template into the cache.
-        add_filter(
-            'page_attributes_dropdown_pages_args',
-            array($this, 'register_project_templates')
-        );
+        if ( version_compare( floatval( get_bloginfo( 'version' ) ), '4.7', '<' ) ) {
+
+            // 4.6 and older
+            add_filter(
+                'page_attributes_dropdown_pages_args',
+                array($this, 'register_project_templates')
+            );
+
+        } else {
+
+            // Add a filter to the wp 4.7 version attributes metabox
+            add_filter(
+                'theme_page_templates', array( $this, 'add_new_template' )
+            );
+
+        }
 
         add_filter(
             'default_page_template_title',
             array($this, 'register_project_templates')
         );
-        
+
         /** ACF Integration */
         add_action('acf/include_field_types', array($this, 'register_project_templates'));
 
@@ -75,6 +87,16 @@ class MgPageTemplates
         );
     }
 
+
+    /*
+     * Add custom templates for post/page/custom post types for WP 4.7+
+     */
+
+    public function add_new_template( $posts_templates ) {
+
+        $posts_templates = array_merge( $posts_templates, $this->loadCustomTemplates() );
+        return $posts_templates;
+    }
 
     /**
      * Adds our template to the pages cache in order to trick WordPress
@@ -107,6 +129,16 @@ class MgPageTemplates
 
         return $atts;
     }
+
+
+    /*
+     * Set list of custom templates
+     */
+    public function loadCustomTemplates(){
+        $templates = array();
+        return $templates;
+    }
+
 
     /**
      * Category Rewrite Filter
