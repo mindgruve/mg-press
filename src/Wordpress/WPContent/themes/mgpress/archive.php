@@ -9,8 +9,6 @@ $data['time_format'] = get_option('time_format');
 // prepare template array
 $templates = array();
 
-$is_category_page = false;
-
 if (is_tax()) {
 
     $data['category'] = get_category(get_query_var('cat'));
