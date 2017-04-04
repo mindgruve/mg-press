@@ -6,10 +6,6 @@ if (!class_exists('MgTwig')) {
 
         protected $blockController;
 
-        public function __construct()
-        {
-//            $this->blockController = new BlockController();
-        }
 
         public function init()
         {
@@ -50,40 +46,6 @@ if (!class_exists('MgTwig')) {
 
                 return implode(' ', $output);
             }
-        }
-
-
-        public function renderForm($formId)
-        {
-            if (function_exists('ninja_forms_display_form')) {
-                return ninja_forms_display_form($formId);
-            }
-        }
-
-        public function galleryImageTypeTitle($type)
-        {
-
-            switch ($type) {
-                case 'hotel':
-                    return 'Hotel';
-                case 'rooms':
-                    return 'Rooms';
-                case 'amenities':
-                    return 'Amenities';
-                case 'restaurant':
-                    return 'Restaurant';
-                case 'local':
-                    return 'In the Area';
-                case 'events':
-                    return 'Wedding/Events';
-                case null :
-                case 'null' :
-                    return 'Lakehouse';
-                default:
-                    return ucwords($type);
-            }
-
-
         }
 
         public static function acfOption($optionName)
