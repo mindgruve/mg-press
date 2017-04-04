@@ -1,0 +1,31 @@
+{#
+ # 404
+ #
+ #  The template used to display the 404 Not Found error page.
+ #}
+
+{# parent template #}
+{% extends 'layout/full-width.html.twig' %}
+
+{% set altHeader = false %}
+
+{% do add_stylesheet('404-css', theme.link ~ '/assets/css/template/404.css', [], '', 'all') %}
+
+{# define content block #}
+{% block content %}
+
+   <section class="page-404">
+
+       <header>
+            <h1>404</h1>
+       </header>
+
+       <div class="content">
+
+
+           <a href="/" class="btn btn-secondary">Back To Home</a>
+       </div>
+
+   </section>
+
+{% endblock %}

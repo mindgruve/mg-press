@@ -14,8 +14,13 @@ $theme_includes = array(
   '/lib/custom.php',           // Custom scripts
   '/lib/woops_setup.php',      // Woops
   '/lib/menu_setup.php',       // Menu Setup
-  '/lib/pages_setup.php',      // Pages Setup
+  '/lib/pages_setup.php',       // Pages Setup
+  '/lib/twig_setup.php',        // Twig Setup
 );
+
+include('models/ACFFieldsProxy.php');
+ACFFieldsProxy::init();
+
 
 foreach($theme_includes as $file){
   if(!$filepath = locate_template($file)) {

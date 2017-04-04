@@ -17,7 +17,8 @@
         {# add stylesheets #}
         {# {% do add_stylesheet('bootstrap', template_uri ~ '/assets/css/vendor/bootstrap.css', [], '3.2.0', 'all') %} #}
 
-        {# add scripts #}
+        {# add scrip
+        ts #}
         {# {% do add_script_file('require', template_uri ~ '/assets/javascript/vendor/require.js', [], '2.1.14', false) %} #}
 
         {# localize scripts #}
@@ -47,6 +48,7 @@
                         <a href="{{site.url}}" id="logo">{{site.name}}</a>
                     </header>
 
+                    {%  include 'includes/search-form.html.twig' %}
                 {% endblock %}
 
                 {# block body block #}

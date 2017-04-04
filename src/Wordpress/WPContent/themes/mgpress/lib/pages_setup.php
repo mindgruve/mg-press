@@ -41,7 +41,6 @@ class MgPageTemplates
 
         $this->templates = array();
 
-        // Add a filter to the attributes metabox to inject template into the cache.
         if ( version_compare( floatval( get_bloginfo( 'version' ) ), '4.7', '<' ) ) {
 
             // 4.6 and older
@@ -59,6 +58,7 @@ class MgPageTemplates
 
         }
 
+        // Add a filter to the attributes metabox to inject template into the cache.
         add_filter(
             'default_page_template_title',
             array($this, 'register_project_templates')
@@ -80,13 +80,18 @@ class MgPageTemplates
         // add rewrite rule for search page
         add_action('template_redirect', array($this, 'search_url_rewrite'));
 
+
         // Add your templates to this array.
-        $this->templates = array(
-            'page/home'               => 'Home Page',
-			/** add more pages */
-        );
+        $this->templates = $this->loadCustomTemplates();
     }
 
+    public function loadCustomTemplates(){
+        // Add your templates to this array.
+        $templates = array(
+            'template/home'                => 'Home Template',
+        );
+        return $templates;
+    }
 
     /*
      * Add custom templates for post/page/custom post types for WP 4.7+
@@ -130,16 +135,6 @@ class MgPageTemplates
         return $atts;
     }
 
-
-    /*
-     * Set list of custom templates
-     */
-    public function loadCustomTemplates(){
-        $templates = array();
-        return $templates;
-    }
-
-
     /**
      * Category Rewrite Filter
      *
@@ -153,7 +148,7 @@ class MgPageTemplates
             $firstRuleKey = key($rules);
             if (preg_match('/^([^\/]+)/', $firstRuleKey, $matches)) {
                 $rules =
-                    array($matches[1] . '/page/?([0-9]{1,})/?$' => 'index.php?post_type=post&paged=$matches[1]')
+                    array($matches[1].'/page/?([0-9]{1,})/?$' => 'index.php?post_type=post&paged=$matches[1]')
                     + $rules;
             }
         }
@@ -168,7 +163,7 @@ class MgPageTemplates
     public function search_url_rewrite()
     {
         if (is_search() && isset($_GET['s'])) {
-            wp_redirect(home_url("/search/") . urlencode(get_query_var('s')));
+            wp_redirect(home_url("/search/").urlencode(get_query_var('s')));
             exit();
         }
     }
