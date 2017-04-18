@@ -10,18 +10,18 @@
 
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link rel="profile" href="http://gmpg.org/xfn/11">
+        <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 
         <title>{{function('wp_title', '|', true, 'right')}}</title>
 
         {# add stylesheets #}
         {# {% do add_stylesheet('bootstrap', template_uri ~ '/assets/css/vendor/bootstrap.css', [], '3.2.0', 'all') %} #}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         {# add scripts #}
-        {# {% do add_script_file('require', template_uri ~ '/assets/javascript/vendor/require.js', [], '2.1.14', false) %} #}
-
-        {# localize scripts #}
-        {# {% do localize_script('require', 'require', {'baseUrl': template_uri ~ '/assets/javascript/'}) %} #}
+        {# {% do add_script_file('vendor', template_uri ~ '/assets/built/vendor.built.js', [], '2.1.14', false) %} #}
 
         {{wp_head}}
 
@@ -38,21 +38,20 @@
 
         <div id="page">
 
-            <div id='wrapper'>
+            <div id="wrapper">
 
                 {# declare header block #}
                 {% block header %}
+                    {% include 'includes/header.html.twig' %}
 
-                    <header id="header">
-                        <a href="{{site.url}}" id="logo">{{site.name}}</a>
-                    </header>
-
+                    {# TIMBER SEARCH FORM #}
+                    {#{%  include 'includes/search-form.html.twig' %}#}
                 {% endblock %}
 
                 {# block body block #}
                 {% block body %}{% endblock %}
 
-                <div class='push'></div>
+                <div class="push"></div>
 
             </div>
             <!-- end div#wrapper -->
@@ -60,11 +59,7 @@
 
             {# block footer block #}
             {% block footer %}
-
-                <footer id="footer">
-                    <p>{{__("Copyright &copy; %s", 'theme')|format("now"|date('Y'))}}</p>
-                </footer>
-
+                {% include 'includes/footer.html.twig' %}
             {% endblock %}
 
         </div>
