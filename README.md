@@ -1,5 +1,5 @@
 # mg-press
-Wordpress + Composer + Twig
+Wordpress + Composer + Twig + Advanced Custom Fields
 
 ## Installation
   
