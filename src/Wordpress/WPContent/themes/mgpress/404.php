@@ -4,4 +4,4 @@
 $data = Timber::get_context();
 
 // render template
-Timber::render('pages/404.html.twig', $data);
+Timber::render('exception/404.html.twig', $data);
