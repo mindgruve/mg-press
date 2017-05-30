@@ -3,7 +3,7 @@
 /**
  * Menus
  */
-class DriscollHealthPlanMenus
+class ThemeMenus
 {
     protected static $menusArray = array(
         // add more menus here...
@@ -14,7 +14,7 @@ class DriscollHealthPlanMenus
     {
         // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
         register_nav_menus(self::$menusArray);
-        add_filter('acf/load_field/name=wp_menu', array('DriscollHealthPlanMenus', 'acf_load_wp_menu_field_choices'));
+        add_filter('acf/load_field/name=wp_menu', array('ThemeMenus', 'acf_load_wp_menu_field_choices'));
     }
 
     public static function acf_load_wp_menu_field_choices($field)
@@ -35,4 +35,4 @@ class DriscollHealthPlanMenus
     }
 }
 
-DriscollHealthPlanMenus::init();
+ThemeMenus::init();
