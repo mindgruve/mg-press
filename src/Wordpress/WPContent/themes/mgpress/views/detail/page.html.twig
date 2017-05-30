@@ -4,11 +4,6 @@
  #  A template used to display the default content detail view.
  #}
 
-{# thumbnail options #}
-{% set thumbnail_width   = 600 %}
-{% set thumbnail_height  = 400 %}
-
-
 {# parent template #}
 {% extends 'layout/left-sidebar.html.twig' %}
 
@@ -17,27 +12,38 @@
 
     {% if post %}
 
-        <article class="detail {{post.class}}">
+        <article class="page">
 
-            {# post header #}
-            <header>
+            {% for item in post.get_field('hero_content') %}
+                {% if item.published %}
+                    {% include 'block/hero.html.twig' %}
+                {% endif %}
+            {% endfor %}
 
-                {# post title #}
-                <h1 class="title">
-                    {{post.title}}
-                </h1>
+            <section class="page-content">
+                <div class="container">
 
-            </header>
+                    {# post header #}
+                    <header>
 
-            {# post image #}
-            {% if post.thumbnail %}
-                <img src="{{post.get_thumbnail.get_src|resize(thumbnail_width, thumbnail_height)}}" />
-            {% endif %}
+                        {# post title #}
+                        <h1 class="title">
+                            {{ post.title }}
+                        </h1>
 
-            {# post content #}
-            <div class="content">
-                {{post.content}}
-            </div>
+                    </header>
+
+                    {# post content #}
+                    {{ post.content }}
+
+                </div><!-- /.container -->
+            </section>
+
+            {% for item in post.get_field('body_content') %}
+                {% if item.published %}
+                    {% include 'block/'~item.acf_fc_layout~'.html.twig' %}
+                {% endif %}
+            {% endfor %}
 
         </article>
 
