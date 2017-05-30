@@ -63,10 +63,10 @@ class ComposerScripts
                 $name = $directory->getFilename();
                 if (in_array($name, $muPlugins)) {
                     $targetPath = __DIR__ . '/../../../src/Wordpress/WPContent/mu-plugins';
-                    $relPath = $fs->makePathRelative($directory, $targetPath);
+                    $relPath = $fs->makePathRelative((string)$directory, $targetPath);
                 } else {
                     $targetPath = __DIR__ . '/../../../src/Wordpress/WPContent/plugins';
-                    $relPath = $fs->makePathRelative($directory, $targetPath);
+                    $relPath = $fs->makePathRelative((string)$directory, $targetPath);
                 }
                 $fs->symlink($relPath, $targetPath . '/' . $name);
             }
