@@ -23,6 +23,7 @@ TEST
         update the Site Address (URL) to be at your web root.
         For example, using localhost your site address setting would be: http://localhost/
       
+    6) Download and install ACF Plugin (which is a dependency to run)
 
 ## WordPress Configuration
 
@@ -56,6 +57,7 @@ Woops - http://filp.github.io/whoops/
 Wordpress Search Replace Database - https://interconnectit.com/products/search-and-replace-for-wordpress-databases/   
 Symfony Console Component - http://symfony.com/doc/current/components/console/introduction.html     
 WP CLI - http://wp-cli.org/   
+Advanced Custom Fields - https://www.advancedcustomfields.com/
 
 ## Project Layout   
 composer.json   
