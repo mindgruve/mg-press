@@ -1,0 +1,40 @@
+{#
+ # INCLUDE::COMMENTS
+ #
+ #  An HTML include used for a list of comments.
+ #}
+
+{% set comments = get_comments(post) %}
+
+<!-- comment box -->
+<section class="comment-box">
+
+    <!-- comments -->
+    <div class="comments">
+        {% if comments %}
+            <h3>{{ __("Comments", 'theme') }}</h3>
+            <ul>
+                {% for cmt in comments %}
+                    <li>{% include "include/comment.twig" with {comment:cmt} %}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="comment-pager">
+        {{previous_comments_link(post)}}
+        {{next_comments_link(post)}}
+    </div>
+
+    <!-- comment form -->
+    {% if can_comment(post) %}
+        {% include "form/comment.twig" %}
+    {% else %}
+        {% if post.comment_status == 'closed' %}
+            <p>{{ __("Comments for this post are closed.", 'theme') }}</p>
+        {% elseif site.comment_registration %}
+            <p>{{ __("Please log in or register to comment.", 'theme') }}</p>
+        {% endif %}
+    {% endif %}
+
+</section>

@@ -1,0 +1,42 @@
+{#
+ # FORM::COMMENT
+ #
+ #  A form include used for post comments.
+ #}
+
+<div class="comment-form">
+    <h3>{{ __("Add comment", 'theme') }}</h3>
+
+    <form id="form" class="comment-form" method="post" action="{{ site.wpurl~'/wp-comments-post.php' }}">
+        {% if  user %}
+            <input type="hidden" name="email" value="{{ user.email }}">
+            <input type="hidden" name="author" value="{{ user.name }}">
+            <input type="hidden" name="url" value="{{ user.link }}">
+        {% else %}
+            <div>
+                <label for="email">{{ __("Email", 'theme') }}</label>
+                <input {{ site.comments.require_name_email ? 'required' : '' }} name="email" type="text" id="email"/>
+
+                <label for="author">{{ __("Username", 'theme') }}</label>
+                <input {{ site.comments.require_name_email ? 'required' : '' }} name="author" type="text" id="author"/>
+
+                <label for="url">{{ __("URL", 'theme') }}</label>
+                <input name="url" id="url" type="text"/>
+            </div>
+        {% endif %}
+
+        <div>
+            <label for="comment">{{ __("Comment", 'theme') }}</label>
+            <textarea placeholder="{{ __("comment text", 'theme') }}" name="comment" cols="60" rows="3" id="comment"></textarea>
+        </div>
+
+        <input name="comment_post_ID" value="{{ post.id }}" id="comment_post_ID" type="hidden">
+        <input name="comment_parent" id="comment_parent" value="{{ comment.ID|default('0') }}" type="hidden">
+
+        <div>
+            <button type="submit" name="Submit" class="btn">{{ __("Send", 'theme') }}</button>
+            <button type="reset">{{ __("Cancel", 'theme') }}</button>
+            <p>{{ __("Your comment will be revised by the site if needed.", 'theme') }}</p>
+        </div>
+    </form>
+</div>

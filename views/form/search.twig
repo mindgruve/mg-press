@@ -1,0 +1,16 @@
+{#
+ # FORM::SEARCH
+ #
+ #  A form include used for search queries.
+ #}
+
+<form role="search" method="get" class="search-form" action="{{site.url}}">
+    <input
+            type="search"
+            value="{{(function('is_search') ? function('get_search_query') : '')}}"
+            autocomplete="off"
+            name="s"
+            placeholder="{{ __("Search by typing...", 'theme') }}"
+    >
+    <button type="submit">{{ __("Search", 'theme') }}</button>
+</form>

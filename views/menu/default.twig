@@ -1,0 +1,16 @@
+{#
+ # MENU::DEFAULT
+ #
+ #  An HTML include used for menus.
+ #}
+
+{% if menu %}
+    <ul>
+        {% for item in menu %}
+            <li class="{{ item.classes | join(' ') }}">
+                <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+                {% include "menu/default.twig" with {'menu': item.get_children} %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

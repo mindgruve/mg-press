@@ -1,0 +1,28 @@
+{#
+ # TEMPLATE::LEFT-SIDEBAR
+ #
+ #  A detail template used as a page template option.
+ #
+ #  Template Name: Left Sidebar
+ #}
+
+{# parent template #}
+{% extends 'layout/left-sidebar.twig' %}
+
+{# declare content block #}
+{% block content %}
+
+    <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+        <img src="{{ post.thumbnail.src|resize(1200, 300) }}">
+        <section class="article-content">
+            <h1 class="article-h1">{{ post.title }}</h1>
+            <p class="blog-author">
+                <span>{{ __("By", 'theme') }}</span> <a href="{{post.author.path}}">{{ post.author.name }}</a><span>&bull;</span> {{ post.date }}
+            </p>
+            <div class="article-body">
+                {{post.content}}
+            </div>
+        </section>
+    </article>
+
+{% endblock %}

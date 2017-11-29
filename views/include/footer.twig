@@ -1,0 +1,17 @@
+{#
+ # INCLUDE::FOOTER
+ #
+ #  An HTML include used for the site's footer.
+ #}
+
+<footer id="footer" class="page-footer" role="contentinfo">
+
+    <nav id="nav-secondary" class="nav-secondary" role="navigation">
+        {% include "menu/default.twig" with {'menu': menus.secondary_navigation.get_items} %}
+    </nav><!-- #nav -->
+
+    <nav id="nav-social" class="nav-social" role="navigation">
+        {% include "menu/default.twig" with {'menu': menus.social.get_items} %}
+    </nav><!-- #nav -->
+
+</footer>

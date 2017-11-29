@@ -1,0 +1,19 @@
+{#
+ # INCLUDE::HEADER
+ #
+ #  An HTML include used for the site's header.
+ #}
+
+<header class="header" role="banner">
+
+    <h1 class="hdr-logo" role="banner">
+        <a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
+    </h1>
+
+    <nav id="nav-primary" class="nav-primary" role="navigation">
+        {% include "menu/default.twig" with {'menu': menus.primary_navigation.get_items} %}
+    </nav><!-- #nav -->
+
+    {% include 'form/search.twig' %}
+
+</header>

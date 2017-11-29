@@ -1,0 +1,62 @@
+{#
+ # INCLUDE::PAGINATION
+ #
+ #  An HTML include used for pagination.
+ #}
+
+{% if posts.pagination.pages is not empty %}
+    <div class="pagination-block">
+        <ul class="pagination">
+            {% if pagination.pages|first and pagination.pages|first.current != true %}
+                <li class="first btn">
+                    <a href="{{ pagination.pages|first.link }}">{{ __("First", 'theme') }}</a>
+                </li>
+            {% else %}
+                <li class="first btn disabled">
+                    <a>{{ __("First", 'theme') }}</a>
+                </li>
+            {% endif %}
+
+            {% if pagination.prev %}
+                <li class="prev btn">
+                    <a href="{{ pagination.prev.link }}">{{ __("Previous", 'theme') }}</a>
+                </li>
+            {% else %}
+                <li class="prev btn disabled">
+                    <a>{{ __("Previous", 'theme') }}</a>
+                </li>
+            {% endif %}
+
+            {% for page in pagination.pages %}
+                {% if page.link %}
+                    <li>
+                        <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                    </li>
+                {% else %}
+                    <li class="current">
+                        <a class="{{ page.class }}">{{ page.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if pagination.next %}
+                <li class="next btn">
+                    <a href="{{ pagination.next.link }}">{{ __("Next", 'theme') }}</a>
+                </li>
+            {% else %}
+                <li class="next btn disabled">
+                    <a>{{ __("Next", 'theme') }}</a>
+                </li>
+            {% endif %}
+            {% if pagination.pages|last and pagination.pages|last.current != true %}
+                <li class="last btn">
+                    <a href="{{ pagination.pages|last.link }}">{{ __("Last", 'theme') }}</a>
+                </li>
+            {% else %}
+                <li class="last btn disabled">
+                    <a>{{ __("Last", 'theme') }}</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

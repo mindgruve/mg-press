@@ -1,0 +1,29 @@
+{#
+ # LAYOUT::LEFT-SIDEBAR
+ #
+ #  A layout template used for left-sidebar views.
+ #}
+
+{# parent template #}
+{% extends 'base.twig' %}
+
+{# declare layout block #}
+{% block layout %}
+
+    <aside>
+        {% block sidebar %}
+            {{ sidebar_primary }}
+        {% endblock %}
+    </aside>
+
+    <div id="content" role="main">
+
+        {# declare content block #}
+        {% block content %}
+            <p>{{ __("Sorry, no content.", 'theme') }}</p>
+        {% endblock %}
+
+    </div>
+    <!-- end /#content -->
+
+{% endblock %}

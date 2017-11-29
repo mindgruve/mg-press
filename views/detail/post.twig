@@ -1,0 +1,49 @@
+{#
+ # DETAIL::SINGLE
+ #
+ #  A detail template used for a single Post view.
+ #}
+
+{# parent template #}
+{% extends 'layout/left-sidebar.twig' %}
+
+{# declare content block #}
+{% block content %}
+
+    <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+        <img src="{{ post.thumbnail.src|resize(1200, 300) }}">
+        <section class="article-content">
+
+            <h1 class="article-h1">{{ post.title }}</h1>
+
+            <p class="blog-author">
+                <span>{{ __("By", 'theme') }}</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
+            </p>
+
+            <p>{{ __("Categories", 'theme') }}</p>
+            <ul class="article-categories">
+                {% for category in post.categories %}
+                    <li><a href="{{ category.link }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <p>{{ __("Tags", 'theme') }}</p>
+            <ul class="article-tags">
+                {% for tag in post.tags %}
+                    <li><a href="{{ tag.link }}">{{ tag.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <div class="article-body">
+                {{post.content}}
+            </div>
+
+        </section>
+
+        {% include 'include/pager.twig' with { pagination: post } %}
+
+        {% include "include/comments.twig" %}
+
+    </article>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{#
+ # EXCEPTION::404
+ #
+ #  An exception template used for the 404 Not Found error page.
+ #}
+
+{# parent template #}
+{% extends 'layout/full-width.twig' %}
+
+{# declare content block #}
+{% block content %}
+
+    <h2>404</h2>
+    <p>{{ __("Not Found", 'theme') }}</p>
+
+{% endblock %}
