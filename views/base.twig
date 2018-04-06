@@ -29,9 +29,8 @@
             </div>
             <!-- /#wrapper -->
 
-            {# some plugins may need these hooks #}
+            {# some plugins may need this hook #}
             {% do function('do_action', 'get_footer') %}
-            {% do function('do_action', 'get_sidebar') %}
 
             {# declare footer block #}
             {% block footer %}
