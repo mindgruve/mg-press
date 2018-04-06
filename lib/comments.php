@@ -8,7 +8,7 @@
  *
  * @package     WordPress
  * @subpackage  MGPress
- * @version     1.0
+ * @version     1.0.1
  * @since       MGPress 1.0
  * @author      kchevalier@mindgruve.com
  */
@@ -98,16 +98,45 @@ if(!class_exists('MGPressComments')) {
         protected static $topLevelCommentCount;
 
         /**
+         * Global comments on flag
+         * @var bool
+         */
+        protected static $commentsOn;
+
+        /**
+         * Flash messages
+         * @var array
+         */
+        protected static $flashMessages;
+
+        /**
          * Initialize MGPressComments class.
          *
          * @since MGPress 1.0
          *
+         * @param array $comments
          * @return null
          */
-        public static function init()
+        public static function init(array $comments = null)
         {
+
+            // set options
+            if (isset($comments) && is_array($comments)) {
+                self::$commentsOn = isset($comments['comments_on']) ? $comments['comments_on'] : true;
+                self::$flashMessages = isset($comments['flash_messages']) && is_array($comments['flash_messages'])
+                    ? $comments['flash_messages']
+                    : array();
+            }
+
             add_filter('timber_context', array('MGPressComments', 'addToContext'));
             add_filter('timber/twig/functions', array('MGPressComments', 'addToTwig'));
+
+            // hooks for comment submissions
+            if (self::$commentsOn && count(self::$flashMessages)) {
+                add_action('set_comment_cookies', array('MGPressComments', 'setCommentCookies'), 10, 2);
+                add_action('init', array('MGPressComments', 'checkCommentCookies'));
+                add_filter('comment_post_redirect', array('MGPressComments', 'commentPostRedirect'), 10, 2);
+            }
         }
 
         /**
@@ -185,7 +214,7 @@ if(!class_exists('MGPressComments')) {
         {
 
             // comments manually closed
-            if ($post->comment_status == 'closed') {
+            if (!self::$commentsOn || $post->comment_status == 'closed') {
                 return false;
             }
 
@@ -232,6 +261,11 @@ if(!class_exists('MGPressComments')) {
          */
         public static function getComments(Timber\Post $post)
         {
+
+            // comments turned off
+            if (!self::$commentsOn) {
+                return false;
+            }
 
             // get comments from WordPress function and return hierarchical Timber\Comment array
             $comments = self::buildCommentList(get_comments(
@@ -294,6 +328,57 @@ if(!class_exists('MGPressComments')) {
             return '<a href="' .
                 $post->link() . (strpos($post->link(), '?') === false ? '?' : '&') . 'cpage=' . $nextPageNumber
                 . '">' . $label . '</a>';
+        }
+
+        /**
+         * Set cookies for comment submissions.
+         *
+         * @since MGPress 1.0.1
+         *
+         * @param WP_Comment $comment
+         * @param WP_User $user
+         */
+        public static function setCommentCookies(WP_Comment $comment, WP_User $user)
+        {
+            setcookie('comment_submission_parent', $comment->comment_parent . ',' . $comment->comment_approved, 0, '/');
+        }
+
+        /**
+         * Check cookies for recent comment submissions.
+         *
+         * @since MGPress 1.0.1
+         */
+        public static function checkCommentCookies()
+        {
+            if( isset( $_COOKIE['comment_submission_parent'] ) ) {
+                if ($values = explode(',', $_COOKIE['comment_submission_parent'])) {
+                    $commentParentId = (int) $values[0];
+                    $flashMessageKey = $values[1] == 1 ? 'success' : 'pending';
+                    $flashMessage = isset(self::$flashMessages[$flashMessageKey]) ? self::$flashMessages[$flashMessageKey] : null;
+
+                    setcookie('comment_submission_parent', null, -1, '/');
+                    unset($_COOKIE['comment_submission_parent']);
+                    add_action('comment_form_before_id', function($commentId) use ($commentParentId, $flashMessage, $flashMessageKey) {
+                        if ($commentId == $commentParentId && $flashMessage) {
+                            echo "<div id='flash-message' class='" . $flashMessageKey . "'><p>"  . __($flashMessage, "theme") . "</p></div>";
+                        }
+                    });
+                }
+            }
+        }
+
+        /**
+         * Redirect URL after comment submission.
+         *
+         * @since MGPress 1.0.1
+         *
+         * @param string $location
+         * @param WP_Comment comment
+         * @return string
+         */
+        public static function commentPostRedirect($location, WP_Comment $comment)
+        {
+            return get_permalink($comment->comment_post_ID) . '#flash-message';
         }
 
         /**
@@ -379,5 +464,5 @@ if(!class_exists('MGPressComments')) {
         }
     }
 
-    MGPressComments::init();
+    MGPressComments::init(isset($MgPressSettings['comments']) ? $MgPressSettings['comments'] : null);
 }

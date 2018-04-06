@@ -1,0 +1,4 @@
+<p class="logged-in-as">
+    <a href="{{ function('get_edit_user_link') }}" aria-label="Logged in as {{ user_identity|e('html_attr') }}. Edit your profile.">Logged in as {{ user_identity }}</a>.
+    <a href="{{ function('wp_logout_url', function('apply_filters', 'the_permalink', post.link, post.id)) }}">Log out?</a>
+</p>

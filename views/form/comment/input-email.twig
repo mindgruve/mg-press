@@ -1,0 +1,8 @@
+<div class="form-control{{ site.comments.require_name_email ? ' required' : '' }}">
+    <label for="email">{{ __("Email", 'theme') }}</label>
+    <input {{ site.comments.require_name_email ? 'required aria-required="true"' : '' }}
+        name="email"
+        type="text"
+        class="comment-form-email"
+        value="{{ commenter.comment_author_email ? commenter.comment_author_email|e('html_attr') : '' }}"/>
+</div>

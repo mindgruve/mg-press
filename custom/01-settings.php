@@ -48,4 +48,13 @@ $MgPressSettings = [
             'after_title'   => '</h3>',
         ],
     ],
+
+    // comment settings
+    'comments' => [
+        'comments_on' => true, // global switch
+        'flash_messages' => [
+            'success' => "Thank you for your comment.",          // set to null to disable message
+            'pending' => "Your comment is pending moderation.",  // set to null to disable message
+        ],
+    ],
 ];
