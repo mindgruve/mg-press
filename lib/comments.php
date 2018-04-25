@@ -210,8 +210,14 @@ if(!class_exists('MGPressComments')) {
          * @param \Timber\Comment  $comment  If using nested comments, the comment to check if comments are allowed.
          * @return bool
          */
-        public static function canComment(Timber\Post $post, Timber\Comment $comment = null)
+        public static function canComment($post, Timber\Comment $comment = null)
         {
+
+            // check param type
+            // we do this here to support manual template data overrides, such as providing an array of values
+            if (!is_object($post) || 'Timber\Post' !== get_class($post)) {
+                return false;
+            }
 
             // comments manually closed
             if (!self::$commentsOn || $post->comment_status == 'closed') {
@@ -259,8 +265,14 @@ if(!class_exists('MGPressComments')) {
          * @param Timber\Post  $post  (required) The post to return comments for.
          * @return array Timber\Comment
          */
-        public static function getComments(Timber\Post $post)
+        public static function getComments($post)
         {
+
+            // check param type
+            // we do this here to support manual template data overrides, such as providing an array of values
+            if (!is_object($post) || 'Timber\Post' !== get_class($post)) {
+                return false;
+            }
 
             // comments turned off
             if (!self::$commentsOn) {
@@ -299,8 +311,15 @@ if(!class_exists('MGPressComments')) {
          * @param string        $label  A label to use as the link anchor text.
          * @return bool|string
          */
-        public static function nextCommentsLink(Timber\Post $post, $label = 'load more comments')
+        public static function nextCommentsLink($post, $label = 'load more comments')
         {
+
+            // check param type
+            // we do this here to support manual template data overrides, such as providing an array of values
+            if (!is_object($post) || 'Timber\Post' !== get_class($post)) {
+                return false;
+            }
+
             $nextPageNumber = (get_query_var('cpage', 1) + 1);
             if (ceil(self::getTopLevelCommentCount($post) / self::$commentsPerPage) < $nextPageNumber) {
                 return false;
@@ -319,8 +338,14 @@ if(!class_exists('MGPressComments')) {
          * @param string        $label  A label to use as the link anchor text.
          * @return bool|string
          */
-        public static function previousCommentsLink(Timber\Post $post, $label = 'load previous comments')
+        public static function previousCommentsLink($post, $label = 'load previous comments')
         {
+            // check param type
+            // we do this here to support manual template data overrides, such as providing an array of values
+            if (!is_object($post) || 'Timber\Post' !== get_class($post)) {
+                return false;
+            }
+
             $nextPageNumber = (get_query_var('cpage', 1) - 1);
             if (0 >= $nextPageNumber) {
                 return false;

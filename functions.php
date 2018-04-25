@@ -38,6 +38,7 @@ if(!class_exists('MGPressFunctions')) {
             '/lib/assets.php',           // Assets
             '/lib/comments.php',         // Comments
             '/lib/templates.php',        // Templates
+            '/lib/styleguide.php',       // Style Guide
             '/lib/activation.php',       // Theme activation
         );
 

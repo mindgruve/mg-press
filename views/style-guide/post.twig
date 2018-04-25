@@ -1,0 +1,34 @@
+{#
+ # STYLE-GUIDE::POST
+ #
+ #  An include used for the styleguide. Contains HTML for post components.
+ #}
+
+<h2>Content Type: Post</h2>
+
+{% set post = {
+    title: "Blog Post Title",
+    content: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc condimentum lobortis metus sit amet ornare. Nullam pharetra finibus eleifend. Aliquam augue neque, feugiat ut suscipit in, eleifend vel dui. Mauris magna sem, consequat sed elementum ut, rutrum nec lacus. Sed quam quam, volutpat sit amet sapien in, tincidunt auctor augue. Maecenas ut viverra ligula, eget imperdiet massa. Donec erat ipsum, rutrum pretium felis vitae, egestas porttitor velit. Donec eu erat ut massa tempus viverra. Vestibulum ornare vulputate lectus, vel tristique ex porttitor vel. Praesent sed ante vel justo facilisis venenatis et et ligula. Ut tincidunt nisi mi, sit amet pellentesque massa scelerisque et. Nunc eget lacinia leo. In libero arcu, tempor in fringilla ut, ultrices non magna.</p><p>Donec nibh libero, lobortis id diam id, rhoncus varius risus. Ut volutpat faucibus sodales. Nunc non ligula id massa ornare tristique vitae ut arcu. Curabitur fringilla faucibus purus sed pulvinar. Praesent lobortis pulvinar tincidunt. Nulla vitae tincidunt velit. Suspendisse et arcu eros. Phasellus aliquam mollis dignissim. Cras sit amet eleifend nunc. In egestas justo a est mollis bibendum. Nunc sit amet finibus velit, quis vulputate eros.</p>",
+    date: "yesterday"|date(function('get_option', 'date_format')),
+    author: {
+        name: "Author Name",
+        path: "https://google.com"
+    },
+    post_type : 'post',
+    ID: 5,
+    categories: [
+        { name: "Category 1", link: "/cat-1" },
+        { name: "Category 2", link: "/cat-2" },
+        { name: "Category 3", link: "/cat-3" },
+        { name: "Category 4", link: "/cat-4" }
+    ],
+    tags: [
+        { name: "Tag 1", link: "/tag-1" },
+        { name: "Tag 2", link: "/tag-2" },
+        { name: "Tag 3", link: "/tag-3" }
+    ],
+    prev: { link: "/prev-link" },
+    next: { link: "/next-link" }
+} %}
+
+{{ block("content", "detail/post.twig") }}

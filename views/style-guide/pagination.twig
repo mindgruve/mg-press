@@ -1,0 +1,62 @@
+{#
+ # STYLE-GUIDE::PAGINATION
+ #
+ #  An include used for the styleguide. Contains HTML for pagination modules.
+ #}
+
+<h2>Pagination</h2>
+
+<h3>First Result Page</h3>
+
+{% include "include/pagination.twig" with {
+    pagination: {
+        pages : [
+            { link: "", class: "", title: "Page 1", current: true },
+            { link: "/page-2", class: "", title: "Page 2" },
+            { link: "/page-3", class: "", title: "Page 3" },
+            { link: "/page-4", class: "", title: "Page 4" },
+            { link: "/page-5", class: "", title: "Page 5" }
+        ],
+        next : { link: "/page-2" }
+    }
+} %}
+
+<h3>Second Result Page</h3>
+
+{% include "include/pagination.twig" with {
+    pagination: {
+        pages : [
+            { link: "/page-1", class: "", title: "Page 1" },
+            { link: "", class: "", title: "Page 2", current: true },
+            { link: "/page-3", class: "", title: "Page 3" },
+            { link: "/page-4", class: "", title: "Page 4" },
+            { link: "/page-5", class: "", title: "Page 5" }
+        ],
+        prev : { link: "/page-1" },
+        next : { link: "/page-3" }
+    }
+} %}
+
+<h3>Last Result Page</h3>
+
+{% include "include/pagination.twig" with {
+    pagination: {
+        pages : [
+            { link: "/page-1", class: "", title: "Page 1" },
+            { link: "/page-2", class: "", title: "Page 2" },
+            { link: "/page-3", class: "", title: "Page 3" },
+            { link: "/page-4", class: "", title: "Page 4" },
+            { link: "", class: "", title: "Page 5", current: true }
+        ],
+        prev : { link: "/page-4" }
+    }
+} %}
+
+<h3>Pager</h3>
+
+{% include "include/pager.twig" with {
+    pagination: {
+        prev: { link: "/prev-link" },
+        next: { link: "/next-link" }
+    }
+} %}

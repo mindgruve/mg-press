@@ -1,0 +1,81 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{ site.language_attributes }}> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{ site.language_attributes }}> <!--<![endif]-->
+
+    <head>
+        <meta charset="{{ site.charset }}" />
+        <title>Style Guide - {{ site.name }}</title>
+        <meta name="description" content="Style Guide for {{ site.name }}">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {# Styles #}
+        <link rel='stylesheet' href='{{ theme.link ~ '/style.css' }}' type='text/css' media='all' />
+
+        {# Scripts #}
+
+
+    </head>
+
+    <body class="style-guide">
+
+        <div id="page">
+
+            <div id="wrapper">
+
+                <header>
+
+                    <h1>
+                        the Style Guide
+                    </h1>
+
+                </header>
+
+                <aside>
+
+                    side bar
+
+                </aside>
+
+                <div id="content" role="main">
+
+                    <section id="typography">
+                        {% include 'style-guide/typography.twig' %}
+                    </section>
+
+                    <section id="color">
+                        {% include 'style-guide/color.twig' %}
+                    </section>
+
+                    <section id="lists">
+                        {% include 'style-guide/lists.twig' %}
+                    </section>
+
+                    <section id="pagination">
+                        {% include 'style-guide/pagination.twig' %}
+                    </section>
+
+                    <section id="post">
+                        {% include 'style-guide/post.twig' %}
+                    </section>
+
+                </div>
+                <!-- end /#content -->
+
+            </div>
+            <!-- /#wrapper -->
+
+            <footer>
+
+                <p>By <a href="http://mindgruve.com/">Mindgruve</a></p>
+
+            </footer>
+
+        </div>
+        <!-- /#page -->
+
+    </body>
+</html>
