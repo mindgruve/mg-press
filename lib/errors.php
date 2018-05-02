@@ -27,7 +27,11 @@ if(!class_exists('MGPressErrors')) {
          */
         public static function init()
         {
-            if(defined('ENVIRONMENT') && ENVIRONMENT == 'dev' && class_exists('\Whoops\Run')){
+            if(defined('ENVIRONMENT')
+                && ENVIRONMENT == 'dev'
+                && class_exists('\Whoops\Run')
+                && !is_admin()
+            ) {
                 $whoops = new \Whoops\Run;
                 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
                 $whoops->register();
