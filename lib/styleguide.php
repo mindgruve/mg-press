@@ -33,7 +33,7 @@ if(!class_exists('MGPressStyleGuide')) {
         /**
          * Register Filters
          *
-         * @since MgCache 1.1
+         * @since MgPress 1.1
          *
          * @return null
          */
@@ -50,7 +50,7 @@ if(!class_exists('MGPressStyleGuide')) {
         /**
          * Rewrite Rules Filter
          *
-         * @since MgCache 1.1
+         * @since MgPress 1.1
          *
          * @param array $rules
          * @return array
@@ -64,7 +64,7 @@ if(!class_exists('MGPressStyleGuide')) {
         /**
          * Style guide controller.
          *
-         * @since MgCache 1.1
+         * @since MgPress 1.1
          *
          * @return null
          */
