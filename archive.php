@@ -7,14 +7,18 @@
  *
  * @package     WordPress
  * @subpackage  MGPress
- * @version     1.0
+ * @version     1.0.1
  * @since       MGPress 1.0
  * @author      kchevalier@mindgruve.com
  */
 
 // set context
-$context          = Timber::get_context();
-$context['posts'] = new Timber\PostQuery();
+$context = Timber::get_context();
+try {
+    $context['post'] = Timber::query_post(trim($_SERVER["REQUEST_URI"], '/'));
+} catch (\Exception $e) {
+    $context['post'] = null;
+}
 
 // prepare template array
 $templates = array();
@@ -65,6 +69,12 @@ if (is_tax()) {
 } elseif (is_post_type_archive()) {
 
     $context['post_type'] = get_post_type_object(get_query_var('post_type'));
+
+    // controller (optional)
+    $controller = dirname(__FILE__).'/controllers/list-'.$context['post_type']->name.'.php';
+    if (file_exists($controller)) {
+        include_once($controller);
+    }
 
     $templates[] = 'list/' . $context['post_type']->name . '.twig';
 };
