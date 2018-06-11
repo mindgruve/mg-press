@@ -1,0 +1,43 @@
+.sg-tabs-list {
+    border-bottom: 1px solid #dfdfdf;
+    line-height: 1.42857143;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    > li {
+        display: inline-block;
+        margin-bottom: -1px;
+
+        > a {
+            border: 1px solid #dfdfdf;
+            color: #000;
+            display: inline-block;
+            margin-right: 2px;
+            padding: 7px 25px;
+            text-decoration: none;
+        }
+
+        &.sg-active  {
+            > a,
+            > a:hover,
+            > a:focus {
+                background-color: #dfdfdf;
+                border: 1px solid #dfdfdf;
+                border-bottom-color: transparent;
+                color: #555;
+                cursor: default;
+            }
+        }
+    }
+}
+
+.sg-tabs-panel {
+    display: none;
+    padding: 40px 0;
+
+    &.sg-active {
+        display: block;
+    }
+}

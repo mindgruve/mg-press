@@ -1,0 +1,59 @@
+{% set container = container is defined ? container : true %}
+
+<section>
+    <header class="sg-container">
+        <div class="sg-heading">
+            <h2>{{ headline }}</h2>
+        </div>
+    </header>
+
+    <div class="sg-tabs">
+        <div class="sg-container">
+            <ul class="sg-tabs-list">
+                <li class="sg-active">
+                    <a href="#{{ headline|lower }}-live">
+                        Live
+                    </a>
+                </li>
+                <li>
+                    <a href="#{{ headline|lower }}-code">
+                        Code
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sg-tabs-panel sg-active" id="{{ headline|lower }}-live">
+
+            {% if container %}
+            <div class="sg-container">
+                {% endif %}
+
+                {% set element_content %}
+                    {% include content %}
+                {% endset %}
+
+                {{ element_content|trim }}
+                {% if container %}
+            </div><!-- .container -->
+            {% endif %}
+
+        </div><!-- .sg-tab-panel -->
+        <div class="sg-tabs-panel" id="{{ headline|lower }}-code">
+            <div class="sg-container">
+                <div class="sg-row">
+                    <div class="sg-col-sm-6">
+                        <p>Code</p>
+                        <pre><code>{{ element_content|e('html')|trim }}</code></pre>
+                    </div>
+                    <div class="sg-col-sm-6">
+                        <p>Notes</p>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- .sg-tab-panel -->
+    </div>
+
+
+</section>

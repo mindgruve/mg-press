@@ -1,0 +1,17 @@
+{
+  "name": "mg-press-style-guide",
+  "version": "1.0.0",
+  "description": "Style Guide for MG Press",
+  "private": true,
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compass": "compass watch -c compass_prod.rb --poll --time | compass watch -c compass.rb --poll --time"
+  },
+  "author": "Westley Mon, Mindgruve",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "bootstrap-sass-namespace": "^3.3.7-alpha.6"
+  }
+}

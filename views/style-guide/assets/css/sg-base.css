@@ -1,0 +1,110 @@
+/* line 4, ../scss/sg-base.scss */
+.sg-heading h1,
+.sg-heading h2,
+.sg-heading h3,
+.sg-heading h4,
+.sg-heading h5,
+.sg-heading h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+/* line 14, ../scss/sg-base.scss */
+.sg-heading h1 {
+  font-size: 2.4rem;
+}
+@media (min-width: 768px) {
+  /* line 14, ../scss/sg-base.scss */
+  .sg-heading h1 {
+    font-size: 4rem;
+  }
+}
+/* line 22, ../scss/sg-base.scss */
+.sg-heading h2 {
+  font-size: 2rem;
+}
+
+/* line 28, ../scss/sg-base.scss */
+.sg-page-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d2d2d2;
+  color: #000;
+  font-size: 1.8rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 30px 0;
+}
+/* line 37, ../scss/sg-base.scss */
+.sg-page-nav li {
+  -moz-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
+  -o-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
+  -webkit-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear, opacity 0.3s ease;
+  -webkit-transition-delay: 0s, 0s, 0s, 0.3s;
+  transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
+  display: inline-block;
+  margin-right: 40px;
+  visibility: visible;
+}
+/* line 43, ../scss/sg-base.scss */
+.sg-page-nav li:first-child {
+  -moz-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
+  -o-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
+  -webkit-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear, opacity 0.3s ease;
+  -webkit-transition-delay: 0.3s, 0.3s, 0.6s, 0s;
+  transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  margin-right: 0;
+  max-width: 0;
+  position: relative;
+  visibility: hidden;
+}
+/* line 51, ../scss/sg-base.scss */
+.sg-page-nav li:first-child::after {
+  -moz-transform: rotate(-45deg) translate(0, -50%);
+  -ms-transform: rotate(-45deg) translate(0, -50%);
+  -webkit-transform: rotate(-45deg) translate(0, -50%);
+  transform: rotate(-45deg) translate(0, -50%);
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  content: '';
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  width: 8px;
+}
+/* line 66, ../scss/sg-base.scss */
+.sg-page-nav li a {
+  color: inherit;
+  text-decoration: none;
+}
+/* line 74, ../scss/sg-base.scss */
+.sg-page-nav.pinned li:first-child {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
+  -o-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
+  -webkit-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear, opacity 0.3s ease;
+  -webkit-transition-delay: 0s, 0s, 0s, 0.3s;
+  transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
+  margin-right: 40px;
+  max-width: 200px;
+  visibility: visible;
+}
+/* line 83, ../scss/sg-base.scss */
+.sg-page-nav.pinned li:not(.sg-active):not(:first-child) {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -moz-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
+  -o-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
+  -webkit-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear, opacity 0.3s ease;
+  -webkit-transition-delay: 0.3s, 0.3s, 0.6s, 0s;
+  transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
+  margin-right: 0;
+  max-width: 0;
+  position: relative;
+  visibility: hidden;
+}
+
+/*# sourceMappingURL=sg-base.css.map */

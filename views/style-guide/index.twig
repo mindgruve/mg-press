@@ -2,7 +2,7 @@
 <!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
 <!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
 <!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{ site.language_attributes }}> <![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" {{ site.language_attributes }}> <!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js sg-html-html" {{ site.language_attributes }}> <!--<![endif]-->
 
     <head>
         <meta charset="{{ site.charset }}" />
@@ -12,6 +12,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        {# Style Guide Styles #}
+        <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/vendor/prism.css">
+        <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/vendor/sg-bootstrap.css">
+        <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-base.css">
+        <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-header.css">
+        <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-tabs.css">
+
+        {# Style Guide Scripts #}
+        <script type="text/javascript" src="{{ theme.link }}/views/style-guide/assets/javascript/vendor/prism.js"></script>
+        <script type="text/javascript" src="{{ theme.link }}/views/style-guide/assets/javascript/sg-main.js"></script>
+
         {# Styles #}
         <link rel='stylesheet' href='{{ theme.link ~ '/style.css' }}' type='text/css' media='all' />
 
@@ -20,17 +31,26 @@
 
     </head>
 
-    <body class="style-guide">
+    <body class="style-guide language-twig sg-html-body">
 
         <div id="page">
 
             <div id="wrapper">
 
-                <header>
+                <header class="sg-header">
 
-                    <h1>
-                        the Style Guide
-                    </h1>
+                    <div class="sg-container">
+                        <div class="logo">
+                            <h1>
+                                the Style Guide
+                            </h1>
+                        </div>
+
+                        <div class="tagline">
+                            <strong>Style Guide</strong> 2018
+                        </div>
+                    </div>
+
 
                 </header>
 
@@ -41,9 +61,36 @@
                 </aside>
 
                 <div id="content" role="main">
+                    <section class="sg-section">
+                        <div class="sg-heading sg-container">
+                            <h1>Typography</h1>
+                        </div>
+
+                        {% include 'style-guide/layout/page-nav.twig' with {
+                            main: 'Typography',
+                            items: [
+                                {
+                                    id: 'headings',
+                                    name: 'Headings'
+                                },
+                                {
+                                    id: 'lists',
+                                    name: 'Lists'
+                                }
+                            ]
+                        } %}
+                    </section>
+
+
+
+                    {% include 'style-guide/layout/element.twig' with {headline: 'Headings', content: 'style-guide/elements/headings.twig', extra: '<h1 class="decor">Heading 1 w/ Decor</h1>' } %}
+                    {% include 'style-guide/layout/element.twig' with {headline: 'Lists', content: 'style-guide/elements/lists.twig', container: false } %}
+
 
                     <section id="typography">
-                        {% include 'style-guide/typography.twig' %}
+
+                        {#{% include 'style-guide/layout/container.twig' with {content: source('style-guide/typography.twig')} %}#}
+
                     </section>
 
                     <section id="color">
