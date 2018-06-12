@@ -88,8 +88,9 @@
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 1;
 }
-/* line 86, ../scss/sg-base.scss */
+/* line 87, ../scss/sg-base.scss */
 .sg-page-nav.pinned ul li:first-child {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -102,7 +103,7 @@
   max-width: 200px;
   visibility: visible;
 }
-/* line 95, ../scss/sg-base.scss */
+/* line 96, ../scss/sg-base.scss */
 .sg-page-nav.pinned ul li:not(.sg-active):not(:first-child) {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
