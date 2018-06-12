@@ -1,14 +1,18 @@
-<div class="sg-container">
-    <ul class="sg-page-nav">
-        <li>
-            {{ main }}
-        </li>
-        {% for item in items %}
-            <li class="{{ loop.first ? 'sg-active' : '' }}">
-                <a href="#{{ item.id }}">
-                    {{ item.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="sg-page-nav-wrapper">
+    <div class="sg-page-nav">
+        <div class="sg-container">
+            <ul>
+                <li>
+                    {{ main }}
+                </li>
+                {% for item in items %}
+                    <li class="{{ loop.first ? 'sg-active' : '' }}">
+                        <a href="#sg-section-{{ item.id }}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>

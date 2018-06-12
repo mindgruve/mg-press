@@ -74,8 +74,24 @@
                                     name: 'Headings'
                                 },
                                 {
+                                    id: 'paragraph',
+                                    name: 'Paragraph'
+                                },
+                                {
+                                    id: 'footnote',
+                                    name: 'Footnote'
+                                },
+                                {
+                                    id: 'blockquote',
+                                    name: 'Blockquote'
+                                },
+                                {
                                     id: 'lists',
                                     name: 'Lists'
+                                },
+                                {
+                                    id: 'more',
+                                    name: 'More'
                                 }
                             ]
                         } %}
@@ -83,8 +99,13 @@
 
 
 
-                    {% include 'style-guide/layout/element.twig' with {headline: 'Headings', content: 'style-guide/elements/headings.twig', extra: '<h1 class="decor">Heading 1 w/ Decor</h1>' } %}
-                    {% include 'style-guide/layout/element.twig' with {headline: 'Lists', content: 'style-guide/elements/lists.twig', container: false } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'headings', headline: 'Headings', content: 'style-guide/elements/headings.twig', extra: '<h1 class="decor">Heading 1 w/ Decor</h1>' } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'paragraph', headline: 'paragraph' } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'footnote', headline: 'footnote' } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'blockquote', headline: 'blockquote' } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'blockquote', headline: 'blockquote' } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'lists', headline: 'Lists', content: 'style-guide/elements/lists.twig', container: true } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'more', headline: 'more' } %}
 
 
                     <section id="typography">

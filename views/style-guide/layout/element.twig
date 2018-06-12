@@ -1,6 +1,6 @@
 {% set container = container is defined ? container : true %}
 
-<section>
+<section id="sg-section-{{ id }}">
     <header class="sg-container">
         <div class="sg-heading">
             <h2>{{ headline }}</h2>
@@ -23,6 +23,7 @@
             </ul>
         </div>
 
+        {% if content is defined %}
         <div class="sg-tabs-panel sg-active" id="{{ headline|lower }}-live">
 
             {% if container %}
@@ -53,6 +54,7 @@
 
             </div>
         </div><!-- .sg-tab-panel -->
+        {% endif %}
     </div>
 
 

@@ -24,28 +24,31 @@
 }
 
 /* line 28, ../scss/sg-base.scss */
+.sg-page-nav-wrapper {
+  height: 86px;
+  margin-top: -40px;
+}
+
+/* line 32, ../scss/sg-base.scss */
 .sg-page-nav {
   background-color: #ffffff;
+}
+/* line 35, ../scss/sg-base.scss */
+.sg-page-nav ul {
   border-bottom: 1px solid #d2d2d2;
   color: #000;
   font-size: 1.8rem;
   list-style-type: none;
   margin: 0;
-  padding: 0 0 30px 0;
-}
-/* line 37, ../scss/sg-base.scss */
-.sg-page-nav li {
-  -moz-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
-  -o-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
-  -webkit-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear, opacity 0.3s ease;
-  -webkit-transition-delay: 0s, 0s, 0s, 0.3s;
-  transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
-  display: inline-block;
-  margin-right: 40px;
-  visibility: visible;
+  padding: 30px 0;
 }
 /* line 43, ../scss/sg-base.scss */
-.sg-page-nav li:first-child {
+.sg-page-nav ul li {
+  display: inline-block;
+  margin-right: 40px;
+}
+/* line 48, ../scss/sg-base.scss */
+.sg-page-nav ul li:first-child {
   -moz-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
   -o-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
   -webkit-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear, opacity 0.3s ease;
@@ -58,8 +61,8 @@
   position: relative;
   visibility: hidden;
 }
-/* line 51, ../scss/sg-base.scss */
-.sg-page-nav li:first-child::after {
+/* line 56, ../scss/sg-base.scss */
+.sg-page-nav ul li:first-child::after {
   -moz-transform: rotate(-45deg) translate(0, -50%);
   -ms-transform: rotate(-45deg) translate(0, -50%);
   -webkit-transform: rotate(-45deg) translate(0, -50%);
@@ -74,13 +77,20 @@
   top: 50%;
   width: 8px;
 }
-/* line 66, ../scss/sg-base.scss */
-.sg-page-nav li a {
+/* line 71, ../scss/sg-base.scss */
+.sg-page-nav ul li a {
   color: inherit;
   text-decoration: none;
 }
-/* line 74, ../scss/sg-base.scss */
-.sg-page-nav.pinned li:first-child {
+/* line 78, ../scss/sg-base.scss */
+.sg-page-nav.pinned {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+/* line 86, ../scss/sg-base.scss */
+.sg-page-nav.pinned ul li:first-child {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
   -moz-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s;
@@ -92,19 +102,12 @@
   max-width: 200px;
   visibility: visible;
 }
-/* line 83, ../scss/sg-base.scss */
-.sg-page-nav.pinned li:not(.sg-active):not(:first-child) {
+/* line 95, ../scss/sg-base.scss */
+.sg-page-nav.pinned ul li:not(.sg-active):not(:first-child) {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
-  -moz-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
-  -o-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
-  -webkit-transition: max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear, opacity 0.3s ease;
-  -webkit-transition-delay: 0.3s, 0.3s, 0.6s, 0s;
-  transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
-  margin-right: 0;
-  max-width: 0;
   position: relative;
-  visibility: hidden;
+  display: none;
 }
 
 /*# sourceMappingURL=sg-base.css.map */
