@@ -69,7 +69,7 @@ window.addEventListener("load", function () {
  * Sub Nav Active States
  */
 window.addEventListener("load", function () {
-    var subNavItems = Array.prototype.slice.call(document.querySelectorAll('.sg-page-nav a'));
+    var subNavItems = Array.prototype.slice.call(document.querySelectorAll('.sg-page-nav a')); // DomList to Array
     // reverse array for cascading conditional from bottom up.
     subNavItems.reverse();
 
@@ -102,5 +102,23 @@ window.addEventListener("load", function () {
 
     window.requestAnimationFrame(highlightActive);
 
+});
 
+/**
+ * Sub Nav Smooth Scroll
+ */
+window.addEventListener("load", function() {
+    var subNavItems = document.querySelectorAll('.sg-page-nav a');
+
+    for (var i = 0; i < subNavItems.length; i++) {
+        subNavItems[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            var href = e.target.hash.substring(1);
+            var offset = document.getElementById(href).offsetTop;
+            window.scrollTo({
+                top: offset - 85,
+                behavior: "smooth"
+            });
+        });
+    }
 });
