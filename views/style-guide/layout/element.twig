@@ -40,15 +40,20 @@
             {% endif %}
 
         </div><!-- .sg-tab-panel -->
+            {% set code_url = content|replace({'.twig': '-code.twig'}) %}
+            {% set code %}
+                {% include [code_url, content] %}
+            {% endset %}
         <div class="sg-tabs-panel" id="{{ headline|lower }}-code">
             <div class="sg-container">
                 <div class="sg-row">
                     <div class="sg-col-sm-6">
                         <p>Code</p>
-                        <pre><code>{{ element_content|e('html')|trim }}</code></pre>
+                        <pre><code>{{ code|e('html')|trim }}</code></pre>
                     </div>
                     <div class="sg-col-sm-6">
                         <p>Notes</p>
+                        {{ notes|raw }}
                     </div>
                 </div>
 

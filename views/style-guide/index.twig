@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-base.css">
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-header.css">
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-tabs.css">
+        <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-footer.css">
 
         {# Style Guide Scripts #}
         <script type="text/javascript" src="{{ theme.link }}/views/style-guide/assets/javascript/vendor/prism.js"></script>
@@ -97,19 +98,17 @@
                         } %}
                     </section>
 
+                    {% include 'style-guide/layout/element.twig' with {id: 'headings', headline: 'Headings', content: 'style-guide/elements/typography-headings.twig', extra: '<h1 class="decor">Heading 1 w/ Decor</h1>' } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'paragraph', headline: 'paragraph', content: 'style-guide/elements/typography-paragraph.twig', container: true } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'footnote', headline: 'footnote', content: 'style-guide/elements/typography-footnote.twig', container: true } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'blockquote', headline: 'blockquote', content: 'style-guide/elements/typography-blockquote.twig', container: true } %}1
+                    {% include 'style-guide/layout/element.twig' with {id: 'lists', headline: 'Lists', content: 'style-guide/elements/typography-lists.twig', container: true, notes: 'Modifier Classes:<br> <code>.list-social</code>: For Social Links' } %}
+                    {% include 'style-guide/layout/element.twig' with {id: 'more', headline: 'more', content: 'style-guide/elements/typography-more.twig', container: true } %}
 
 
-                    {% include 'style-guide/layout/element.twig' with {id: 'headings', headline: 'Headings', content: 'style-guide/elements/headings.twig', extra: '<h1 class="decor">Heading 1 w/ Decor</h1>' } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'paragraph', headline: 'paragraph' } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'footnote', headline: 'footnote' } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'blockquote', headline: 'blockquote' } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'lists', headline: 'Lists', content: 'style-guide/elements/lists.twig', container: true } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'more', headline: 'more' } %}
+                   {# <section id="typography">
 
-
-                    <section id="typography">
-
-                        {#{% include 'style-guide/layout/container.twig' with {content: source('style-guide/typography.twig')} %}#}
+                        {% include 'style-guide/layout/container.twig' with {content: source('style-guide/typography.twig')} %}
 
                     </section>
 
@@ -128,16 +127,28 @@
                     <section id="post">
                         {% include 'style-guide/post.twig' %}
                     </section>
-
+#}
                 </div>
                 <!-- end /#content -->
 
             </div>
             <!-- /#wrapper -->
 
-            <footer>
+            <footer class="sg-footer">
 
-                <p>By <a href="http://mindgruve.com/">Mindgruve</a></p>
+                <div class="sg-container">
+                    <div class="logo">
+                        <img src="{{ theme.link }}/views/style-guide/assets/images/mg-logo.png"
+                             srcset="{{ theme.link }}/views/style-guide/assets/images/mg-logo.png 1x, {{ theme.link }}/views/style-guide/assets/images/mg-logo_2x.png 2x"
+                             width="40"
+                             height="40"
+                             alt="Mindgruve">
+                    </div><!-- .logo     -->
+                    <div class="copyright">
+                        &copy; Copyright 2018 Mindgruve, <br class="sg-visible-xs">
+                        All Rights Reserved
+                    </div>
+                </div>
 
             </footer>
 
