@@ -53,7 +53,11 @@ if(!class_exists('MGPressSite')) {
             // add theme support features
             if (is_array($themeSupport) && count($themeSupport)) {
                 foreach ($themeSupport as $feature) {
-                    add_theme_support($feature[0], isset($feature[1]) ? $feature[1] : array());
+                    if (isset($feature[1])) {
+                        add_theme_support($feature[0], $feature[1]);
+                    } else {
+                        add_theme_support($feature[0]);
+                    }
                 }
             }
 
