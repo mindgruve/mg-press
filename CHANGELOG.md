@@ -11,3 +11,12 @@ for the MG Press WordPress theme.
   * Feature: Add comment submit flash messages for user feedback
   * Logic: Refactor comment templates to match WordPress comment_form() logic and hooks
   * Logic: Move get_sidebar action from base template to layout with sidebar
+
+* 1.0.2 (2018-05-02)
+  * Content: Add MIT License
+  * Bug: Remove Whoops error handling from WordPress admin
+
+* 1.0.3 (2018-05-24)
+  * Logic: Autoload PHP files in /models directory
+  * Logic: Load list- and detail- controllers on demand from /controllers directory
+  * Bug: Handle post not found exception for list views (archives)

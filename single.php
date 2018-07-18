@@ -6,7 +6,7 @@
  *
  * @package     WordPress
  * @subpackage  MGPress
- * @version     1.0
+ * @version     1.0.1
  * @since       MGPress 1.0
  * @author      kchevalier@mindgruve.com
  */
@@ -20,7 +20,7 @@ $context['post'] = $post;
 $templateName = $post->meta('_wp_page_template') ? $post->meta('_wp_page_template') : null;
 
 // controller (optional)
-$controller = dirname(__FILE__).'/controllers/'.$post->post_type.'.php';
+$controller = dirname(__FILE__).'/controllers/detail-'.$post->post_type.'.php';
 if (file_exists($controller)) {
     include_once($controller);
 }

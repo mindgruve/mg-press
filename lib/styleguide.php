@@ -40,11 +40,27 @@ if(!class_exists('MGPressStyleGuide')) {
         public static function registerFilters()
         {
 
+            // register URL params
+            add_filter('query_vars', array('MGPressStyleGuide', 'registerQueryVars'));
+
             // URL rewrite rules
             add_filter('category_rewrite_rules', array('MGPressStyleGuide', 'rewriteRulesFilter'));
 
             // add controllers
             add_filter('template_redirect', array('MGPressStyleGuide', 'styleGuideAction'));
+        }
+
+        /**
+         * Register Query Vars
+         *
+         * @since MgPress 1.1
+         *
+         * @param array $vars
+         * @return array
+         */
+        public static function registerQueryVars($vars) {
+            $vars[] = 'section';
+            return $vars;
         }
 
         /**
@@ -57,7 +73,8 @@ if(!class_exists('MGPressStyleGuide')) {
          */
         public static function rewriteRulesFilter($rules)
         {
-            $rules['style-guide$'] = 'index.php?pagename=mg_style_guide';
+            $rules['^style-guide/([^/]*)/?'] = 'index.php?pagename=mg_style_guide&section=$matches[1]';
+            $rules['^style-guide$'] = 'index.php?pagename=mg_style_guide';
             return $rules;
         }
 
@@ -74,11 +91,14 @@ if(!class_exists('MGPressStyleGuide')) {
             // check if on mg_style_guide page
             if (get_query_var('pagename') == 'mg_style_guide') {
 
+                // get section
+                $section = get_query_var('section', null) ? get_query_var('section') : 'index';
+
                 // set context
                 $context  = Timber::get_context();
 
                 // render views
-                Timber::render(array('style-guide/index.twig'), $context, false, \Timber\Loader::CACHE_NONE);
+                Timber::render(array('style-guide/' . $section . '.twig', 'exception/404.twig'), $context, false, \Timber\Loader::CACHE_NONE);
 
                 exit;
             }
