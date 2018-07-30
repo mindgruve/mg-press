@@ -1,0 +1,77 @@
+{#
+ # STYLE-GUIDE::TYPOGRAPHY
+ #
+ #  An include used for the styleguide. Contains HTML snippets for list elements.
+ #}
+
+{% extends 'style-guide/index.twig' %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-colors.css">
+    <section class="sg-section">
+        <div class="sg-heading sg-container">
+            <h1>Colors</h1>
+        </div>
+
+        {% include 'style-guide/layout/page-nav.twig' with {
+            main: 'Colors',
+            items: [
+                {
+                    id: 'primary',
+                    name: 'Primary'
+                },
+                {
+                    id: 'secondary',
+                    name: 'Secondary'
+                },
+                {
+                    id: 'background',
+                    name: 'Background'
+                }
+            ]
+        } %}
+    </section>
+
+    {% include 'style-guide/layout/element.twig' with {id: 'primary', headline: 'Primary', content: 'style-guide/elements/colors.twig', colors: [
+        {
+            'name': "Black",
+            'hex': '#000000',
+            'var': '$black'
+        },
+        {
+            'name': "Blue",
+            'hex': '#60AEE0',
+            'var': '$blue'
+        }
+    ] } %}
+    {% include 'style-guide/layout/element.twig' with {id: 'secondary', headline: 'Secondary', content: 'style-guide/elements/colors.twig', colors: [
+        {
+            'name': "Dark Blue",
+            'hex': '#0C456B',
+            'var': '$dark-blue'
+        },
+        {
+            'name': "Grey",
+            'hex': '#9a9a9a',
+            'var': ['$grey', '$gray']
+        },
+        {
+            'name': "Charcoal",
+            'hex': '#383838',
+            'var': '$charcoal'
+        }
+    ] } %}
+    {% include 'style-guide/layout/element.twig' with {id: 'background', headline: 'Background', content: 'style-guide/elements/colors.twig', colors: [
+        {
+            'name': "Light Grey",
+            'hex': '#f6f6f6',
+            'var': ['$light-grey', '$light-gray', '$lt-gray', '$lt-grey']
+        },
+        {
+            'name': "Light Blue",
+            'hex': '#e9f4fb',
+            'var': ['$light-blue', '$lt-blue']
+        },
+    ] } %}
+
+{% endblock %}

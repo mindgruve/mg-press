@@ -1,0 +1,13 @@
+/* line 7, ../scss/sg-colors.scss */
+.sg-color-swatch-list .sg-swatch {
+  padding-bottom: 100%;
+  margin-bottom: 1em;
+}
+/* line 12, ../scss/sg-colors.scss */
+.sg-color-swatch-list .sg-color-info {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.025em;
+}
+
+/*# sourceMappingURL=sg-colors.css.map */

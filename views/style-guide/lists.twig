@@ -4,60 +4,26 @@
  #  An include used for the styleguide. Contains HTML snippets for list elements.
  #}
 
-<h2>Lists</h2>
+{% extends 'style-guide/index.twig' %}
 
-<h3>Unorderd lists</h3>
+{% block content %}
+    <section class="sg-section">
+        <div class="sg-heading sg-container">
+            <h1>Lists</h1>
+        </div>
 
-<ul>
-    <li>one</li>
-    <li>two</li>
-    <li>three
-        <ul>
-            <li>sub three one</li>
-            <li>sub three two</li>
-        </ul>
-    </li>
-    <li>four</li>
-</ul>
+        {% include 'style-guide/layout/page-nav.twig' with {
+            main: 'Lists',
+            items: [
+                {
+                    id: 'lists',
+                    name: 'Lists'
+                }
+            ]
+        } %}
+    </section>
 
-<pre>
-    &lt;ul&gt;
-        &lt;li&gt;one&lt;/li&gt;
-        &lt;li&gt;two&lt;/li&gt;
-        &lt;li&gt;three
-            &lt;ul&gt;
-                &lt;li&gt;sub three one&lt;/li&gt;
-                &lt;li&gt;sub three two&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt;four&lt;/li&gt;
-    &lt;/ul&gt;
-</pre>
 
-<h3>Orderd lists</h3>
+    {% include 'style-guide/layout/element.twig' with {id: 'lists', headline: 'Lists', content: 'style-guide/elements/typography-lists.twig', container: true, notes: 'Modifier Classes:<br> <code>.list-social</code>: For Social Links' } %}
 
-<ol>
-    <li>one</li>
-    <li>two</li>
-    <li>three
-        <ol>
-            <li>sub three one</li>
-            <li>sub three two</li>
-        </ol>
-    </li>
-    <li>four</li>
-</ol>
-
-<pre>
-    &lt;ol&gt;
-        &lt;li&gt;one&lt;/li&gt;
-        &lt;li&gt;two&lt;/li&gt;
-        &lt;li&gt;three
-            &lt;ol&gt;
-                &lt;li&gt;sub three one&lt;/li&gt;
-                &lt;li&gt;sub three two&lt;/li&gt;
-            &lt;/ol&gt;
-        &lt;/li&gt;
-        &lt;li&gt;four&lt;/li&gt;
-    &lt;/ol&gt;
-</pre>
+{% endblock %}

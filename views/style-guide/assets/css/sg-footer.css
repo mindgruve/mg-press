@@ -1,0 +1,28 @@
+/* line 3, ../scss/sg-footer.scss */
+.sg-footer {
+  background-color: #000000;
+  padding: 40px 0;
+  color: #ababab;
+  text-align: center;
+}
+/* line 9, ../scss/sg-footer.scss */
+.sg-footer .logo {
+  margin: 0 0 20px;
+}
+@media (min-width: 768px) {
+  /* line 3, ../scss/sg-footer.scss */
+  .sg-footer {
+    text-align: left;
+  }
+  /* line 16, ../scss/sg-footer.scss */
+  .sg-footer .sg-container {
+    display: flex;
+    align-items: center;
+  }
+  /* line 21, ../scss/sg-footer.scss */
+  .sg-footer .logo {
+    margin: 0 40px 0 0;
+  }
+}
+
+/*# sourceMappingURL=sg-footer.css.map */

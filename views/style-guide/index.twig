@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/vendor/sg-bootstrap.css">
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-base.css">
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-header.css">
+        <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-side-nav.css">
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-tabs.css">
         <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-footer.css">
 
@@ -55,13 +56,72 @@
 
                 </header>
 
-                <aside>
+                <aside class="sg-side-nav">
 
-                    side bar
+                    <button type="button" class="sg-nav-toggle sg-html-button" aria-label="Open Navigation">
+                        <span class="bar" aria-hidden="true"></span>
+                        <span class="bar" aria-hidden="true"></span>
+                        <span class="bar" aria-hidden="true"></span>
+                    </button>
+
+                    <button type="button" class="sg-nav-toggle-close sg-html-button" aria-label="Close">
+                        <span class="x"></span>
+                    </button>
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Typography
+                                </a>
+
+                                <ul>
+                                    <li>
+                                        <a href="#sg-section-headings">
+                                            Headings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#sg-section-paragraph">
+                                            Paragraph
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#sg-section-footnote">
+                                            Footnote
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#sg-section-blockquote">
+                                            Blockquote
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#sg-section-lists">
+                                            Lists
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Buttons
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Forms
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
                 </aside>
 
                 <div id="content" role="main">
+
+                    {% block content %}
+
                     <section class="sg-section">
                         <div class="sg-heading sg-container">
                             <h1>Typography</h1>
@@ -105,29 +165,7 @@
                     {% include 'style-guide/layout/element.twig' with {id: 'lists', headline: 'Lists', content: 'style-guide/elements/typography-lists.twig', container: true, notes: 'Modifier Classes:<br> <code>.list-social</code>: For Social Links' } %}
                     {% include 'style-guide/layout/element.twig' with {id: 'more', headline: 'more', content: 'style-guide/elements/typography-more.twig', container: true } %}
 
-
-                   {# <section id="typography">
-
-                        {% include 'style-guide/layout/container.twig' with {content: source('style-guide/typography.twig')} %}
-
-                    </section>
-
-                    <section id="color">
-                        {% include 'style-guide/color.twig' %}
-                    </section>
-
-                    <section id="lists">
-                        {% include 'style-guide/lists.twig' %}
-                    </section>
-
-                    <section id="pagination">
-                        {% include 'style-guide/pagination.twig' %}
-                    </section>
-
-                    <section id="post">
-                        {% include 'style-guide/post.twig' %}
-                    </section>
-#}
+                    {% endblock %}
                 </div>
                 <!-- end /#content -->
 

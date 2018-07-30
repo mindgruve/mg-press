@@ -1,0 +1,109 @@
+@import "settings";
+
+.sg-side-nav {
+    background-color: #f7f7f7;
+    bottom: 0;
+    left: 0;
+    padding: 55px 50px;
+    position: absolute;
+    top: 130px;
+    width: 240px;
+
+    .sg-nav-toggle {
+        background-color: #000000;
+        border: 0;
+        display: block;
+        height: 56px;
+        padding: 22px 0;
+        width: 56px;
+        display: none;
+
+        .bar {
+            background-color: #ffffff;
+            display: block;
+            height: 1px;
+            margin: 0 auto 5px;
+            width: 24px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .sg-nav-toggle-close {
+        background-color: transparent;
+        border: 0;
+        display: block;
+        height: 56px;
+        left: 0;
+        padding: 22px 0;
+        position: absolute;
+        top: 0;
+        width: 56px;
+
+        &::before,
+        &::after {
+            @include transform(translate(-50%, -50%) rotate(45deg));
+            background-color: #000000;
+            content: '';
+            display: block;
+            height: 1px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            width: 13px;
+        }
+
+        &::after {
+            height: 13px;
+            width: 1px;
+        }
+    }
+
+    nav {
+        a {
+            color: #000000;
+            text-decoration: none;
+            padding: 20px 0;
+            display: block;
+        }
+
+        > ul {
+            padding: 0;
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.6rem;
+            list-style-type: none;
+
+            > li {
+
+
+                > ul {
+                    font-weight: 400;
+                    padding-left: 5px;
+                    margin: -12px 0 0;
+                    list-style-type: none;
+                    position: relative;
+
+                    &::before {
+                        content: '';
+                        border-left: 1px solid #d2d2d2;
+                        left: 5px;
+                        top: 1em;
+                        bottom: 1em;
+                        position: absolute;
+
+                    }
+
+                    > li {
+                        a {
+                            padding: 12px 20px;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

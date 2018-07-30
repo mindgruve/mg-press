@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAEA,UAAW;EACP,gBAAgB,EAAE,OAAO;EACzB,OAAO,EAAE,MAAM;EACf,KAAK,EAAE,OAAO;EACd,UAAU,EAAE,MAAM;;;AAElB,gBAAM;EACF,MAAM,EAAE,QAAQ;;AAGpB,yBAA0B;;EAV9B,UAAW;IAWH,UAAU,EAAE,IAAI;;;EAEhB,wBAAc;IACV,OAAO,EAAE,IAAI;IACb,WAAW,EAAE,MAAM;;;EAGvB,gBAAM;IACF,MAAM,EAAE,UAAU",
+"sources": ["../scss/sg-footer.scss"],
+"names": [],
+"file": "sg-footer.css"
+}

@@ -3462,6 +3462,35 @@
     margin-left: 100%;
   }
 }
+/* line 6, ../../../node_modules/bootstrap-sass-namespace/assets/stylesheets/bootstrap/_close.scss */
+.sg-close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+/* line 15, ../../../node_modules/bootstrap-sass-namespace/assets/stylesheets/bootstrap/_close.scss */
+.sg-close:hover, .sg-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+/* line 30, ../../../node_modules/bootstrap-sass-namespace/assets/stylesheets/bootstrap/_close.scss */
+.sg-html-button.sg-close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
 /* line 14, ../../../node_modules/bootstrap-sass-namespace/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
 .sg-clearfix:before, .sg-clearfix:after {
   content: " ";
