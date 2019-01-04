@@ -57,4 +57,20 @@ $MgPressSettings = [
             'pending' => "Your comment is pending moderation.",  // set to null to disable message
         ],
     ],
+
+    // block settings
+    'blocks' => [
+        'acf_pro'                    => true, // flexible content block system requires ACF Pro
+        'flexible_layout_post_types' => [],   // array of (custom) post types to use flexible content blocks on
+    ],
+
+    // WP admin settings
+    'admin' => [
+
+        // Argument is an array of post types for which to enable the admin order column
+        'order_column' => [],
+
+        // Argument is an array of post types for which to enable the taxonomies columns
+        'taxonomy_column' => [],
+    ],
 ];

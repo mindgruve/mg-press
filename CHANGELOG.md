@@ -20,3 +20,13 @@ for the MG Press WordPress theme.
   * Logic: Autoload PHP files in /models directory
   * Logic: Load list- and detail- controllers on demand from /controllers directory
   * Bug: Handle post not found exception for list views (archives)
+
+* 1.0.4 (2018-06-17)
+  * Bug: Bug fix to correctly call add_theme_support with 1 or 2 arguments
+
+* 1.1.0 (2019-01-04)
+  * Feature: Add Advanced Custom Fields flexible layout block system.
+  * Feature: Add WP admin table column management features. 
+  * Logic: Add taxonomy archive controller option.
+  * Logic: Load post after controller for single post views.
+  * Bug: Fix assets class skipping minimized resources. 

@@ -35,7 +35,7 @@ Install this theme as you would any other, and be sure the Timber plugin is acti
 
 `custom/` contains custom PHP code for this theme - it serves the same function as WordPress's default `functions.php`. PHP files in this directory will be autoloaded by the `functions.php` file. You can also override classes from `lib/` here.
 
-`controllers/` contains custom controllers for additional business logic that the PHP template files may not provide. Available for Post Type list and detail views by adding a file named `list-{post-type}.php` or `detail-{post-type}.php` respectively. An example use case would be to modify the `Timber\PostQuery` in a list view to change the listing order or limit.
+`controllers/` contains custom controllers for additional business logic that the PHP template files may not provide. Available for Post Type list and detail views and Taxonomy List views by adding a file named `list-{post-type}.php`, `detail-{post-type}.php` or `list-taxonomy-{taxonomy-slug}.php` respectively. An example use case would be to modify the `Timber\PostQuery` in a list view to change the listing order or limit.
 
 `models/` contains autoloaded classes that register [Custom Post Types](https://codex.wordpress.org/Post_Types). Each Custom Post Type should have its own class that registers the post type and any related taxonomies and optionally defines custom properties, although it is usually easier to define properties via the [Advanced Custom Fields](https://www.advancedcustomfields.com/) plugin. 
 

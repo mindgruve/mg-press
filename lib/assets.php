@@ -557,7 +557,7 @@ if(!class_exists('MgPressAssets')) {
             }
 
             $hash = $ver;
-            $prodPath = realpath($prodFile);
+            $prodPath = $prodFile ? realpath($prodFile) : null;
             if ($prodPath && file_exists($prodPath)) {
                 $src = $prodSrc;
                 $hash = md5_file($prodPath);

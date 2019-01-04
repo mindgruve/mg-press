@@ -7,7 +7,7 @@
  *
  * @package     WordPress
  * @subpackage  MGPress
- * @version     1.0.1
+ * @version     1.0.2
  * @since       MGPress 1.0
  * @author      kchevalier@mindgruve.com
  */
@@ -15,7 +15,8 @@
 // set context
 $context = Timber::get_context();
 try {
-    $context['post'] = Timber::query_post(trim($_SERVER["REQUEST_URI"], '/'));
+    $urlArray = explode('/', trim($_SERVER["REQUEST_URI"], '/'));
+    $context['post'] = Timber::query_post(end($urlArray));
 } catch (\Exception $e) {
     $context['post'] = null;
 }
@@ -27,6 +28,13 @@ if (is_tax()) {
 
     $context['term'] = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
     $context['taxonomy'] = get_taxonomy(get_query_var('taxonomy'));
+
+    // controller (optional)
+    $controller = dirname(__FILE__).'/controllers/list-taxonomy-'.$context['taxonomy']->rewrite['slug'].'.php';
+    if (file_exists($controller)) {
+        include_once($controller);
+    }
+
 
     $templates[] = 'list/taxonomy-' . $context['taxonomy']->rewrite['slug'] . '-' . $context['term']->slug . '.twig';
     $templates[] = 'list/taxonomy-' . $context['taxonomy']->rewrite['slug'] . '.twig';

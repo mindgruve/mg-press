@@ -7,7 +7,7 @@
  *
  * @package     WordPress
  * @subpackage  MGPress
- * @version     1.0.1
+ * @version     1.1.0
  * @since       MGPress 1.0
  * @author      kchevalier@mindgruve.com
  */
@@ -38,6 +38,8 @@ if(!class_exists('MGPressFunctions')) {
             '/lib/assets.php',           // Assets
             '/lib/comments.php',         // Comments
             '/lib/templates.php',        // Templates
+            '/lib/blocks.php',           // Blocks
+            '/lib/admin-tables.php',     // Admin Tables
             '/lib/styleguide.php',       // Style Guide
             '/models/*.php',             // Models
             '/lib/activation.php',       // Theme activation
