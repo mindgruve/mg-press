@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAMI,gCAAW;EACP,cAAc,EAAE,IAAI;EACpB,aAAa,EAAE,GAAG;;;AAGtB,oCAAe;EACX,cAAc,EAAE,SAAS;EACzB,SAAS,EAAE,MAAM;EACjB,cAAc,EAAE,OAAO",
-"sources": ["../scss/sg-colors.scss"],
-"names": [],
-"file": "sg-colors.css"
-}

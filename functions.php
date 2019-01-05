@@ -40,7 +40,6 @@ if(!class_exists('MGPressFunctions')) {
             '/lib/templates.php',        // Templates
             '/lib/blocks.php',           // Blocks
             '/lib/admin-tables.php',     // Admin Tables
-            '/lib/styleguide.php',       // Style Guide
             '/models/*.php',             // Models
             '/lib/activation.php',       // Theme activation
         );
