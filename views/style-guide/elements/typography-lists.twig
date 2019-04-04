@@ -1,8 +1,57 @@
-<h3>List Unstyled</h3>
-<ul class="list-unstyled">
-    <li>Lorem ipsum dolor sit.</li>
-    <li>Doloribus minus pariatur tempora.</li>
-    <li>Accusamus assumenda deserunt est!</li>
-    <li>Dolorum eius recusandae unde.</li>
-    <li>Harum quaerat ratione sequi.</li>
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Lists' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <h3>List Unstyled</h3>
+    <ul class="list-unstyled">
+        <li>Lorem ipsum dolor sit.</li>
+        <li>Doloribus minus pariatur tempora.</li>
+        <li>Accusamus assumenda deserunt est!</li>
+        <li>Dolorum eius recusandae unde.</li>
+        <li>Harum quaerat ratione sequi.</li>
+    </ul>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+{# Unordered List #}
+<ul>
+    <li>...</li>
 </ul>
+
+{# Ordered List #}
+<ol>
+    <li>...</li>
+</ol>
+
+{# Unstyled List #}
+<ul class="list-unstyled">
+    <li>...</li>
+</ul>
+
+{# Inline List #}
+<ul class="list-inline">
+    <li>...</li>
+</ul>
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+    Modifier Classes:<br> <code>.list-social</code>: For Social Links
+{% endset %}

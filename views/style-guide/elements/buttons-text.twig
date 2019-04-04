@@ -12,19 +12,19 @@
 
 {% set template = _self %}
 {% set container = true %}
-{% set headline = 'Blockquote' %}
+{% set headline = 'Text' %}
 
 {# Markup to render here #}
 {% set element_content %}
-    <blockquote>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    </blockquote>
+    <a href="#" class="btn btn-text" role="button">Register Now</a>
+    <a href="#" class="btn btn-text active" role="button">Register Now</a>
+    <a href="#" class="btn btn-text hover" role="button">Register Now</a>
 {% endset %}
 
 
 {# Override Code Display Here - defaults to `element_content` #}
 {% set code %}
-
+<a href="#" class="btn btn-text" role="button">Register Now</a>
 {% endset %}
 
 

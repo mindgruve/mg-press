@@ -56,118 +56,73 @@
 
                 </header>
 
-                <aside class="sg-side-nav">
+                <div class="flex-wrapper">
+                    <aside class="sg-side-nav">
 
-                    <button type="button" class="sg-nav-toggle sg-html-button" aria-label="Open Navigation">
-                        <span class="bar" aria-hidden="true"></span>
-                        <span class="bar" aria-hidden="true"></span>
-                        <span class="bar" aria-hidden="true"></span>
-                    </button>
+                        <button type="button" class="sg-nav-toggle sg-html-button" aria-label="Open Navigation">
+                            <span class="bar" aria-hidden="true"></span>
+                            <span class="bar" aria-hidden="true"></span>
+                            <span class="bar" aria-hidden="true"></span>
+                        </button>
 
-                    <button type="button" class="sg-nav-toggle-close sg-html-button" aria-label="Close">
-                        <span class="x"></span>
-                    </button>
+                        <button type="button" class="sg-nav-toggle-close sg-html-button" aria-label="Close">
+                            <span class="x"></span>
+                        </button>
 
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Typography
-                                </a>
+                        <div class="inner">
 
+                            <nav>
                                 <ul>
-                                    <li>
-                                        <a href="#sg-section-headings">
-                                            Headings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#sg-section-paragraph">
-                                            Paragraph
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#sg-section-footnote">
-                                            Footnote
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#sg-section-blockquote">
-                                            Blockquote
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#sg-section-lists">
-                                            Lists
-                                        </a>
-                                    </li>
+                                    {% for item in menu %}
+                                        <li>
+                                            <a href="/style-guide/{{ item.id }}">
+                                                {{ item.name }}
+                                            </a>
+
+                                            {% if section == item.id %}
+                                                <ul>
+                                                    {% for child in item.children %}
+                                                    <li>
+                                                        <a href="#sg-section-{{ child.id }}">
+                                                            {{ child.name }}
+                                                        </a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Buttons
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Forms
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                            </nav>
+                        </div><!-- .inner -->
 
-                </aside>
+                    </aside>
 
-                <div id="content" role="main">
+                    <div id="content" role="main">
 
-                    {% block content %}
+                        {% block content %}
 
-                    <section class="sg-section">
-                        <div class="sg-heading sg-container">
-                            <h1>Typography</h1>
-                        </div>
+                            <section class="sg-section">
+                                <div class="sg-heading sg-container-fluid">
+                                    <h1>
+                                       {{ section_title }}
+                                    </h1>
+                                </div>
 
-                        {% include 'style-guide/layout/page-nav.twig' with {
-                            main: 'Typography',
-                            items: [
-                                {
-                                    id: 'headings',
-                                    name: 'Headings'
-                                },
-                                {
-                                    id: 'paragraph',
-                                    name: 'Paragraph'
-                                },
-                                {
-                                    id: 'footnote',
-                                    name: 'Footnote'
-                                },
-                                {
-                                    id: 'blockquote',
-                                    name: 'Blockquote'
-                                },
-                                {
-                                    id: 'lists',
-                                    name: 'Lists'
-                                },
-                                {
-                                    id: 'more',
-                                    name: 'More'
-                                }
-                            ]
-                        } %}
-                    </section>
+                                {% include 'style-guide/layout/page-nav.twig' with {
+                                    main: section_title,
+                                    items: menu[section]['children']
+                                } %}
+                            </section>
 
-                    {% include 'style-guide/layout/element.twig' with {id: 'headings', headline: 'Headings', content: 'style-guide/elements/typography-headings.twig', extra: '<h1 class="decor">Heading 1 w/ Decor</h1>' } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'paragraph', headline: 'paragraph', content: 'style-guide/elements/typography-paragraph.twig', container: true } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'footnote', headline: 'footnote', content: 'style-guide/elements/typography-footnote.twig', container: true } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'blockquote', headline: 'blockquote', content: 'style-guide/elements/typography-blockquote.twig', container: true } %}1
-                    {% include 'style-guide/layout/element.twig' with {id: 'lists', headline: 'Lists', content: 'style-guide/elements/typography-lists.twig', container: true, notes: 'Modifier Classes:<br> <code>.list-social</code>: For Social Links' } %}
-                    {% include 'style-guide/layout/element.twig' with {id: 'more', headline: 'more', content: 'style-guide/elements/typography-more.twig', container: true } %}
+                            {% for element in menu[section]['children'] %}
+                                {% include 'style-guide/elements/' ~ section ~ '-' ~ element.id ~ '.twig' %}
+                            {% endfor %}
 
-                    {% endblock %}
-                </div>
-                <!-- end /#content -->
+                        {% endblock %}
+                    </div>
+                    <!-- end /#content -->
+                </div><!-- .flex-wrapper -->
 
             </div>
             <!-- /#wrapper -->

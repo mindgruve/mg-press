@@ -1,4 +1,35 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae explicabo illum soluta sunt. Alias
-    asperiores atque, consectetur corporis ipsam libero magnam obcaecati quis rerum. A amet asperiores consequatur,
-    deserunt, dignissimos facilis illo mollitia natus neque possimus qui rem tempore. Enim, necessitatibus, voluptatum.
-    Aperiam aut natus ratione repudiandae tenetur? Earum.</p>
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Paragraph' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae explicabo illum soluta sunt. Alias
+        asperiores atque, consectetur corporis ipsam libero magnam obcaecati quis rerum. A amet asperiores consequatur,
+        deserunt, dignissimos facilis illo mollitia natus neque possimus qui rem tempore. Enim, necessitatibus, voluptatum.
+        Aperiam aut natus ratione repudiandae tenetur? Earum.</p>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+    <p>...</p>
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}

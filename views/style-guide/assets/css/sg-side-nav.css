@@ -1,24 +1,72 @@
 /* line 3, ../scss/sg-side-nav.scss */
+.flex-wrapper {
+  display: flex;
+}
+/* line 6, ../scss/sg-side-nav.scss */
+.flex-wrapper .sg-side-nav {
+  -moz-transition: flex-basis 0.3s ease;
+  -o-transition: flex-basis 0.3s ease;
+  -webkit-transition: flex-basis 0.3s ease;
+  transition: flex-basis 0.3s ease;
+  flex: 0 0 56px;
+  overflow: hidden;
+}
+/* line 11, ../scss/sg-side-nav.scss */
+.sg-show-nav .flex-wrapper .sg-side-nav {
+  flex: 0 0 240px;
+}
+/* line 20, ../scss/sg-side-nav.scss */
+.flex-wrapper #content {
+  flex: 0 1 auto;
+  padding: 0 50px;
+  width: calc(100% - 56px);
+  -moz-transition: width 0.3s ease;
+  -o-transition: width 0.3s ease;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+/* line 26, ../scss/sg-side-nav.scss */
+.sg-show-nav .flex-wrapper #content {
+  width: calc(100% - 240px);
+}
+
+/* line 34, ../scss/sg-side-nav.scss */
 .sg-side-nav {
   background-color: #f7f7f7;
-  bottom: 0;
-  left: 0;
-  padding: 55px 50px;
-  position: absolute;
-  top: 130px;
-  width: 240px;
+  padding: 55px 0;
+  position: relative;
 }
-/* line 12, ../scss/sg-side-nav.scss */
+/* line 44, ../scss/sg-side-nav.scss */
+.sg-side-nav .inner {
+  overflow: hidden;
+  width: 100%;
+  padding: 0 56px;
+  position: absolute;
+}
+/* line 51, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle {
+  -moz-transition: clip-path 0.3s ease;
+  -o-transition: clip-path 0.3s ease;
+  -webkit-transition: clip-path 0.3s ease;
+  transition: clip-path 0.3s ease;
   background-color: #000000;
   border: 0;
+  clip-path: polygon(0% 0, 150% 0%, 100% 150%, 0 100%);
   display: block;
   height: 56px;
+  left: 0;
+  outline: 0;
   padding: 22px 0;
+  position: absolute;
+  top: 0;
   width: 56px;
-  display: none;
+  z-index: 2;
 }
-/* line 21, ../scss/sg-side-nav.scss */
+/* line 67, ../scss/sg-side-nav.scss */
+.sg-show-nav .sg-side-nav .sg-nav-toggle {
+  clip-path: polygon(0% 0, 150% 0%, 0 0, 0 100%);
+}
+/* line 71, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle .bar {
   background-color: #ffffff;
   display: block;
@@ -26,23 +74,25 @@
   margin: 0 auto 5px;
   width: 24px;
 }
-/* line 28, ../scss/sg-side-nav.scss */
+/* line 78, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle .bar:last-child {
   margin-bottom: 0;
 }
-/* line 34, ../scss/sg-side-nav.scss */
+/* line 84, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle-close {
   background-color: transparent;
   border: 0;
   display: block;
   height: 56px;
   left: 0;
+  outline: 0;
   padding: 22px 0;
   position: absolute;
   top: 0;
   width: 56px;
+  z-index: 1;
 }
-/* line 45, ../scss/sg-side-nav.scss */
+/* line 97, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle-close::before, .sg-side-nav .sg-nav-toggle-close::after {
   -moz-transform: translate(-50%, -50%) rotate(45deg);
   -ms-transform: translate(-50%, -50%) rotate(45deg);
@@ -57,19 +107,19 @@
   top: 50%;
   width: 13px;
 }
-/* line 58, ../scss/sg-side-nav.scss */
+/* line 110, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle-close::after {
   height: 13px;
   width: 1px;
 }
-/* line 65, ../scss/sg-side-nav.scss */
+/* line 117, ../scss/sg-side-nav.scss */
 .sg-side-nav nav a {
   color: #000000;
   text-decoration: none;
   padding: 20px 0;
   display: block;
 }
-/* line 72, ../scss/sg-side-nav.scss */
+/* line 124, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul {
   padding: 0;
   margin: 0;
@@ -77,7 +127,7 @@
   font-size: 1.6rem;
   list-style-type: none;
 }
-/* line 82, ../scss/sg-side-nav.scss */
+/* line 134, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul > li > ul {
   font-weight: 400;
   padding-left: 5px;
@@ -85,7 +135,7 @@
   list-style-type: none;
   position: relative;
 }
-/* line 89, ../scss/sg-side-nav.scss */
+/* line 141, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul > li > ul::before {
   content: '';
   border-left: 1px solid #d2d2d2;
@@ -94,7 +144,7 @@
   bottom: 1em;
   position: absolute;
 }
-/* line 100, ../scss/sg-side-nav.scss */
+/* line 152, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul > li > ul > li a {
   padding: 12px 20px;
 }

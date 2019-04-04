@@ -41,5 +41,9 @@
 .sg-tabs-panel.sg-active {
   display: block;
 }
+/* line 44, ../scss/sg-tabs.scss */
+.sg-tabs-panel.full-width {
+  margin: 0 -50px;
+}
 
 /*# sourceMappingURL=sg-tabs.css.map */

@@ -1,0 +1,14 @@
+typography:
+  - Typography:
+    - Headings
+    - Paragraph
+    - Footnote
+    - Blockquote
+    - Lists
+buttons:
+  - Buttons:
+     - Primary
+     - Secondary
+     - Text
+     - Arrows
+     - Pagers

@@ -108,7 +108,7 @@ window.addEventListener("load", function () {
  * Sub Nav Smooth Scroll
  */
 window.addEventListener("load", function() {
-    var subNavItems = document.querySelectorAll('.sg-page-nav a');
+    var subNavItems = document.querySelectorAll('.sg-page-nav a, .sg-side-nav ul li ul li a');
 
     for (var i = 0; i < subNavItems.length; i++) {
         subNavItems[i].addEventListener('click', function(e) {
@@ -121,4 +121,17 @@ window.addEventListener("load", function() {
             });
         });
     }
+});
+
+/**
+ * Side Nav Toggle
+ */
+window.addEventListener("load", function() {
+    document.querySelector('.sg-nav-toggle').addEventListener('click', function() {
+        document.body.classList.add('sg-show-nav');
+    })
+
+    document.querySelector('.sg-nav-toggle-close').addEventListener('click', function() {
+        document.body.classList.remove('sg-show-nav');
+    })
 });

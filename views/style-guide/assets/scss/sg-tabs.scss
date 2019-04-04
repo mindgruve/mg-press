@@ -40,4 +40,8 @@
     &.sg-active {
         display: block;
     }
+
+    &.full-width {
+        margin: 0 -50px;
+    }
 }

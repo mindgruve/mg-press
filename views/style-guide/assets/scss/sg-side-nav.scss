@@ -1,22 +1,72 @@
 @import "settings";
 
+.flex-wrapper {
+    display: flex;
+
+    .sg-side-nav {
+        @include transition(flex-basis 0.3s ease);
+        flex: 0 0 56px;
+        overflow: hidden;
+
+        .sg-show-nav & {
+            flex: 0 0 240px;
+
+            .inner {
+
+            }
+        }
+    }
+
+    #content {
+        flex: 0 1 auto;
+        padding: 0 50px;
+        width: calc(100% - 56px);
+        @include transition(width 0.3s ease);
+
+        .sg-show-nav & {
+            width: calc(100% - 240px);
+        }
+    }
+}
+
+
+
 .sg-side-nav {
     background-color: #f7f7f7;
-    bottom: 0;
-    left: 0;
-    padding: 55px 50px;
-    position: absolute;
-    top: 130px;
-    width: 240px;
+    //bottom: 0;
+    //left: 0;
+    padding: 55px 0;
+    //position: absolute;
+    //top: 130px;
+    //width: 240px;
+    position: relative;
+
+    .inner {
+        overflow: hidden;
+        width: 100%;
+        padding: 0 56px;
+        position: absolute;
+    }
 
     .sg-nav-toggle {
+        @include transition(clip-path 0.3s ease);
         background-color: #000000;
         border: 0;
+        clip-path: polygon(0% 0, 150% 0%, 100% 150%, 0 100%);
         display: block;
         height: 56px;
+        left: 0;
+        outline: 0;
         padding: 22px 0;
+        position: absolute;
+        top: 0;
         width: 56px;
-        display: none;
+        z-index: 2;
+        //display: none;
+
+        .sg-show-nav & {
+            clip-path: polygon(0% 0, 150% 0%, 0 0, 0 100%);
+        }
 
         .bar {
             background-color: #ffffff;
@@ -37,10 +87,12 @@
         display: block;
         height: 56px;
         left: 0;
+        outline: 0;
         padding: 22px 0;
         position: absolute;
         top: 0;
         width: 56px;
+        z-index: 1;
 
         &::before,
         &::after {
