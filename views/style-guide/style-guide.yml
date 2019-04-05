@@ -12,6 +12,7 @@ typography:
     - Lists
     - Subscript
     - Superscript
+    - Address
 buttons:
   - Buttons:
      - Primary
