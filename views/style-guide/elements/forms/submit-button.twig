@@ -1,0 +1,57 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Submit' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <div class="sg-row">
+        <div class="sg-col-sm-6">
+            <h3>Using <code style="display: inline; font-size: 14px;">&lt;button&gt;</code></h3>
+            <form>
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="sg-col-sm-6">
+            <h3>Using <code style="display: inline; font-size: 14px;">&lt;a&gt;</code></h3>
+            <div class="form-group">
+                <a href="#" class="btn btn-primary">
+                    Submit
+                </a>
+            </div>
+        </div>
+    </div>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+<div class="form-group">
+    <button type="submit">Submit</button>
+</div>
+{{ '{# OR #}' }}
+<div class="form-group">
+    <a href="#" class="btn btn-primary">
+        Submit
+    </a>
+</div>
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}

@@ -1,4 +1,4 @@
-{% set id = fn('sanitize_title', headline) %}
+{% set id = element.id %}
 
 <section id="sg-section-{{ id }}">
     <header class="sg-container-fluid">
@@ -14,11 +14,13 @@
                         Live
                     </a>
                 </li>
+                {% if code or notes %}
                 <li>
                     <a href="#{{ id }}-code">
                         Code
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </div>
 
@@ -34,25 +36,26 @@
             {% endif %}
 
         </div><!-- .sg-tab-panel -->
+        {% if code or notes %}
         <div class="sg-tabs-panel" id="{{ id }}-code">
             <div class="sg-container-fluid">
-                <div class="sg-row">
-                    <div class="sg-col-sm-6">
-                        {% if not code|trim|length %}
-                            {% set code = element_content %}
-                        {% endif %}
 
-                        <p>Code</p>
-                        <pre><code>{{ code|e('html')|trim }}</code></pre>
-                    </div>
-                    <div class="sg-col-sm-6">
-                        <p>Notes</p>
-                        {{ notes|raw }}
-                    </div>
-                </div>
+                {% if not code|trim|length %}
+                    {% set code = element_content %}
+                {% endif %}
+
+                <h4>Code</h4>
+                <pre><code>{{ code|e('html')|trim }}</code></pre>
+
+                {% if notes|trim|length %}
+                    <br><br>
+                <h4>Notes</h4>
+                {{ notes|raw }}
+                {% endif %}
 
             </div>
         </div><!-- .sg-tab-panel -->
+        {% endif %}
     </div>
 
 

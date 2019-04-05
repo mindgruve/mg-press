@@ -1,13 +1,39 @@
 /* line 7, ../scss/sg-colors.scss */
+.sg-color-swatch-list .sg-color-swatch {
+  margin-bottom: 50px;
+  padding: 0 15px;
+}
+/* line 12, ../scss/sg-colors.scss */
 .sg-color-swatch-list .sg-swatch {
   padding-bottom: 100%;
   margin-bottom: 1em;
 }
-/* line 12, ../scss/sg-colors.scss */
+/* line 17, ../scss/sg-colors.scss */
 .sg-color-swatch-list .sg-color-info {
   text-transform: uppercase;
   font-size: 1.2rem;
   letter-spacing: 0.025em;
+}
+@media (min-width: 768px) {
+  /* line 4, ../scss/sg-colors.scss */
+  .sg-color-swatch-list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+  }
+  /* line 28, ../scss/sg-colors.scss */
+  .sg-color-swatch-list .sg-color-swatch {
+    flex: 0 1 50%;
+    max-width: 50%;
+    padding-top: 30px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 36, ../scss/sg-colors.scss */
+  .sg-color-swatch-list .sg-color-swatch {
+    flex: 0 1 33.33%;
+    max-width: 33.33%;
+  }
 }
 
 /*# sourceMappingURL=sg-colors.css.map */

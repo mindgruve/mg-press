@@ -1,0 +1,32 @@
+.sg-typefaces {
+    font-style: normal;
+    font-stretch: normal;
+
+    .sg-typeface {
+        margin-bottom: 50px;
+
+        .sg-typeface-label {
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 12px;
+            margin-bottom: 30px;
+            font-family: Helvetica;
+        }
+    }
+
+
+
+    @media (min-width: 768px) {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: baseline;
+
+        .sg-typeface {
+            flex: 0 1 33.33%;
+            max-width: 33.33%;
+            padding-top: 30px;
+        }
+    }
+}

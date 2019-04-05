@@ -129,9 +129,11 @@ window.addEventListener("load", function() {
 window.addEventListener("load", function() {
     document.querySelector('.sg-nav-toggle').addEventListener('click', function() {
         document.body.classList.add('sg-show-nav');
-    })
+        document.cookie = 'nav_open=1'
+    });
 
     document.querySelector('.sg-nav-toggle-close').addEventListener('click', function() {
         document.body.classList.remove('sg-show-nav');
-    })
+        document.cookie = 'nav_open=0'
+    });
 });

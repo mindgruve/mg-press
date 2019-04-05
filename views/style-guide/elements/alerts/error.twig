@@ -1,0 +1,34 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Error' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+    </div>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}

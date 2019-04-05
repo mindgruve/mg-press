@@ -99,10 +99,21 @@ if(!class_exists('MGPressStyleGuide')) {
             if (get_query_var('pagename') == 'mg_style_guide') {
 
                 // get section
-                $section = get_query_var('section', null) ? get_query_var('section') : 'index';
+                $section = get_query_var('section', null) ? get_query_var('section') : 'overview';
 
                 // set context
                 $context  = Timber::get_context();
+
+                // see if nav open cookie is set (preserves nav state as user browses)
+                if(!isset($_COOKIE['nav_open'])) {
+                    setcookie('nav_open', 0);
+                    $_COOKIE['nav_open'] = 0;
+                    $context['nav_open'] = 0;
+                } elseif ($_COOKIE['nav_open'] == 1) {
+                    $context['nav_open'] = 1;
+                } elseif ($_COOKIE['nav_open'] == 0) {
+                    $context['nav_open'] = 0;
+                }
 
                 // add section to context (ie: `typography`)
                 $context['section'] = $section;
@@ -131,7 +142,7 @@ if(!class_exists('MGPressStyleGuide')) {
                 $context['section_title'] = key($menu[$section][0]);
 
                 // render views
-                Timber::render(array('style-guide/' . $section . '.twig', 'exception/404.twig'), $context, false, \Timber\Loader::CACHE_NONE);
+                Timber::render(array('style-guide/' . $section . '.twig', 'style-guide/index.twig', 'exception/404.twig'), $context, false, \Timber\Loader::CACHE_NONE);
 
                 exit;
             }

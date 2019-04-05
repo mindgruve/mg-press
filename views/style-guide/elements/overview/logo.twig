@@ -1,0 +1,70 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Logo' %}
+
+
+{# Markup to render here #}
+{% set element_content %}
+
+    <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-logo.css">
+
+    <div class="sg-logo-wrap">
+
+        <div class="sg-logo" style="background-color: #000000;">
+
+            <img src="{{ theme.link }}/views/style-guide/assets/images/logos/nav-logo_16@2x.png"
+                 width="137"
+                 height="25"
+                 alt="">
+
+        </div><!-- .sg-logo -->
+
+        <div class="sg-logo" style="background-color: #fff;">
+
+            <img src="{{ theme.link }}/views/style-guide/assets/images/logos/nav-logo-black_16@2x.png"
+                 width="137"
+                 height="25"
+                 alt="">
+
+        </div><!-- .sg-logo -->
+
+        <div class="sg-logo" style="background-color: #fff;">
+
+            <img src="{{ theme.link }}/views/style-guide/assets/images/logos/mg-icon-dark_2x.png"
+                 width="30"
+                 height="30"
+                 alt="">
+
+        </div><!-- .sg-logo -->
+
+        <div class="sg-logo" style="background-color: #000;">
+
+            <img src="{{ theme.link }}/views/style-guide/assets/images/logos/mg-icon_2x.png"
+                 width="30"
+                 height="30"
+                 alt="">
+
+        </div><!-- .sg-logo -->
+
+    </div><!-- .sg-logo-wrap -->
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code = false %}
+
+
+{# Add Notes Here #}
+{% set notes = false %}

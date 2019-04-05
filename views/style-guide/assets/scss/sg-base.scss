@@ -1,5 +1,9 @@
 @import "settings";
 
+#wrapper {
+    overflow: hidden;
+}
+
 .sg-heading {
     h1,
     h2,
@@ -26,11 +30,18 @@
 
 // pinned nav
 .sg-page-nav-wrapper {
-    height: 86px;
-    margin-top: -40px;
+    @media (min-width: 768px) {
+        height: 86px;
+        margin-top: -40px;
+    }
 }
 .sg-page-nav {
     background-color: #ffffff;
+    display: none;
+
+    @media (min-width: 768px) {
+        display: block;
+    }
 
     ul {
         border-bottom: 1px solid #d2d2d2;
@@ -39,6 +50,7 @@
         list-style-type: none;
         margin: 0;
         padding: 30px 0;
+
 
         li {
             //@include transition(max-width 0.3s ease, margin-right 0.3s ease, visibility 0s linear 0s, opacity 0.3s ease 0.3s);
@@ -76,14 +88,23 @@
     }
 
     &.pinned {
-        left: 105px;
+        left: 71px;
         position: fixed;
         right: 0;
         top: 0;
         z-index: 1;
+        display: block;
+
+        @media (min-width: 768px) {
+            left: 105px;
+        }
 
         .sg-show-nav & {
-            left: 290px;
+            left: 255px;
+
+            @media (min-width: 768px) {
+                left: 290px;
+            }
         }
 
         ul {

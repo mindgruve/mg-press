@@ -1,0 +1,30 @@
+/* line 5, ../scss/sg-logo.scss */
+.sg-logo-wrap .sg-logo {
+  align-items: center;
+  min-height: 300px;
+  padding: 25px;
+  text-align: center;
+  display: flex;
+}
+/* line 13, ../scss/sg-logo.scss */
+.sg-logo-wrap img {
+  display: block;
+  height: auto;
+  margin: auto;
+  max-width: 100%;
+}
+@media (min-width: 568px) {
+  /* line 3, ../scss/sg-logo.scss */
+  .sg-logo-wrap {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  /* line 24, ../scss/sg-logo.scss */
+  .sg-logo-wrap .sg-logo {
+    flex: 0 1 50%;
+    max-width: 50%;
+    padding-top: 30px;
+  }
+}
+
+/*# sourceMappingURL=sg-logo.css.map */

@@ -1,0 +1,87 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Colors' %}
+
+{# Markup to render here #}
+{% set element_content %}
+
+    {% set colors = [
+        {
+            'name': "Black",
+            'hex': '#000000',
+            'var': '$black'
+        },
+        {
+            'name': "Blue",
+            'hex': '#60AEE0',
+            'var': '$blue'
+        },
+        {
+            'name': "Dark Blue",
+            'hex': '#0C456B',
+            'var': '$dark-blue'
+        },
+        {
+            'name': "Grey",
+            'hex': '#9a9a9a',
+            'var': ['$grey', '$gray']
+        },
+        {
+            'name': "Charcoal",
+            'hex': '#383838',
+            'var': '$charcoal'
+        },
+        {
+            'name': "Light Grey",
+            'hex': '#f6f6f6',
+            'var': ['$light-grey', '$light-gray', '$lt-gray', '$lt-grey']
+        },
+        {
+            'name': "Light Blue",
+            'hex': '#e9f4fb',
+            'var': ['$light-blue', '$lt-blue']
+        }
+    ] %}
+
+    <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-colors.css">
+
+    <div class="sg-color-swatch-list">
+        {% for color in colors %}
+            <div class="sg-color-swatch">
+                <div class="sg-swatch" style="background-color: {{ color.hex }}"></div>
+                <div class="sg-color-info">
+                    {{ color.name }} {{ color.hex }}
+                </div>
+                {% if color.var is iterable %}
+                    {% for var in color.var %}
+                        <code>{{ var }}</code>{{ not loop.last ? '<br>'|raw : '' }}
+                    {% endfor %}
+                {% else %}
+                    <code>{{ color.var }}</code>
+                {% endif %}
+
+
+            </div>
+        {% endfor %}
+    </div>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code = false %}
+
+
+{# Add Notes Here #}
+{% set notes = false %}

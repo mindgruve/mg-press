@@ -1,0 +1,81 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Typefaces' %}
+
+{# Markup to render here #}
+{% set element_content %}
+
+    <link rel="stylesheet" href="{{ theme.link }}/views/style-guide/assets/css/sg-typefaces.css">
+    <link rel="stylesheet" href="{{ theme.link }}/assets/css/style-guide.css">
+
+    {% set typefaces = [
+        {
+            'name': "Arial",
+            'class': 'arial',
+            'var': '$font-arial'
+        },
+        {
+            'name': "Helvetica",
+            'class': 'helvetica',
+            'var': '$font-hevletica'
+        },
+        {
+            'name': "Helvetica Bold",
+            'class': 'helvetica-bold',
+            'var': '$font-hevletica'
+        },
+        {
+            'name': "Georgia",
+            'class': 'georgia',
+            'var': '$font-georgia'
+        },
+    ] %}
+
+    <div class="sg-typefaces">
+
+        {% for typefaces in typefaces %}
+            <div class="sg-typeface">
+
+                <p class="sg-typeface-{{ typefaces.class }}">
+                    {{ typefaces.sample_text|default('AaBbCcDdEe') }}
+                </p>
+
+                <p class="sg-typeface-label">
+                    {{ typefaces.name }}
+                </p>
+
+                <footer>
+                    {% if typefaces.var is iterable %}
+                        {% for var in typefaces.var %}
+                            <code>{{ var }}</code>{{ not loop.last ? '<br>'|raw : '' }}
+                        {% endfor %}
+                    {% else %}
+                        <code>{{ typefaces.var }}</code>
+                    {% endif %}
+                </footer>
+
+            </div>
+        {% endfor %}
+
+    </div>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code = false %}
+
+
+{# Add Notes Here #}
+{% set notes = false %}

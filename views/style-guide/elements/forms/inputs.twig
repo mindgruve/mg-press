@@ -1,0 +1,91 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Inputs' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <div class="sg-row">
+
+        <div class="sg-col-sm-6 sg-col-md-4">
+
+            <form action="#">
+
+                <h3>
+                    Inputs on White
+                </h3>
+
+                <div class="form-row">
+                    <label for="signupName1" class="">Full Name</label>
+                    <input class="form-control" id="signupName1" required="" type="text">
+                </div>
+
+
+            </form>
+
+        </div>
+
+        <div class="sg-col-sm-6 sg-col-md-4">
+
+            <form action="#">
+
+                <h3>
+                    Disabled
+                </h3>
+
+                <div class="form-row">
+                    <label for="signupName2" class="disabled">Full Name</label>
+                    <input class="form-control" id="signupName2" required="" disabled="" type="text">
+                </div>
+
+
+            </form>
+
+        </div>
+
+        <div class="sg-col-sm-6 sg-col-md-4">
+
+            <form action="#">
+
+                <h3>
+                    Validation: Invalid
+                </h3>
+
+                <div class="form-row">
+                    <label for="signupName1" class="">Full Name</label>
+                    <input class="form-control invalid" id="signupName3" required="" type="text">
+                    <span class="hint">Please enter a valid email address.</span>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+<div class="form-row">
+    <label for="signupName1" class="">Full Name</label>
+    <input class="form-control" id="signupName1" required="" type="text">
+</div>
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}

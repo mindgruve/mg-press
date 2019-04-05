@@ -2,6 +2,7 @@
 
 .flex-wrapper {
     display: flex;
+    min-height: calc(100vh - 250px);
 
     .sg-side-nav {
         @include transition(flex-basis 0.3s ease);
@@ -19,12 +20,18 @@
 
     #content {
         flex: 0 1 auto;
-        padding: 0 50px;
+        padding: 0 15px;
         width: calc(100% - 56px);
         @include transition(width 0.3s ease);
 
         .sg-show-nav & {
             width: calc(100% - 240px);
+        }
+    }
+
+    @media (min-width: 768px) {
+        #content {
+            padding: 0 50px;
         }
     }
 }

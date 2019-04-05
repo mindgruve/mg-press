@@ -33,7 +33,7 @@
 
     </head>
 
-    <body class="style-guide language-twig sg-html-body">
+    <body class="style-guide language-twig sg-html-body {{ nav_open ? 'sg-show-nav' : '' }}">
 
         <div id="page">
 
@@ -44,12 +44,12 @@
                     <div class="sg-container">
                         <div class="logo">
                             <h1>
-                                the Style Guide
+                                The Style Guide
                             </h1>
                         </div>
 
                         <div class="tagline">
-                            <strong>Style Guide</strong> 2018
+                            <strong>Style Guide</strong> {{ "now"|date('Y') }}
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@
                             </section>
 
                             {% for element in menu[section]['children'] %}
-                                {% include 'style-guide/elements/' ~ section ~ '-' ~ element.id ~ '.twig' %}
+                                {% include 'style-guide/elements/' ~ section ~ '/' ~ element.id ~ '.twig' %}
                             {% endfor %}
 
                         {% endblock %}
@@ -138,7 +138,7 @@
                              alt="Mindgruve">
                     </div><!-- .logo     -->
                     <div class="copyright">
-                        &copy; Copyright 2018 Mindgruve, <br class="sg-visible-xs">
+                        &copy; Copyright {{ "now"|date('Y') }} Mindgruve, <br class="sg-visible-xs">
                         All Rights Reserved
                     </div>
                 </div>

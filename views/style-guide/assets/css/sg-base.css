@@ -1,4 +1,9 @@
-/* line 4, ../scss/sg-base.scss */
+/* line 3, ../scss/sg-base.scss */
+#wrapper {
+  overflow: hidden;
+}
+
+/* line 8, ../scss/sg-base.scss */
 .sg-heading h1,
 .sg-heading h2,
 .sg-heading h3,
@@ -8,32 +13,41 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -0.01em;
 }
-/* line 14, ../scss/sg-base.scss */
+/* line 18, ../scss/sg-base.scss */
 .sg-heading h1 {
   font-size: 2.4rem;
 }
 @media (min-width: 768px) {
-  /* line 14, ../scss/sg-base.scss */
+  /* line 18, ../scss/sg-base.scss */
   .sg-heading h1 {
     font-size: 4rem;
   }
 }
-/* line 22, ../scss/sg-base.scss */
+/* line 26, ../scss/sg-base.scss */
 .sg-heading h2 {
   font-size: 2rem;
 }
 
-/* line 28, ../scss/sg-base.scss */
-.sg-page-nav-wrapper {
-  height: 86px;
-  margin-top: -40px;
+@media (min-width: 768px) {
+  /* line 32, ../scss/sg-base.scss */
+  .sg-page-nav-wrapper {
+    height: 86px;
+    margin-top: -40px;
+  }
 }
 
-/* line 32, ../scss/sg-base.scss */
+/* line 38, ../scss/sg-base.scss */
 .sg-page-nav {
   background-color: #ffffff;
+  display: none;
 }
-/* line 35, ../scss/sg-base.scss */
+@media (min-width: 768px) {
+  /* line 38, ../scss/sg-base.scss */
+  .sg-page-nav {
+    display: block;
+  }
+}
+/* line 46, ../scss/sg-base.scss */
 .sg-page-nav ul {
   border-bottom: 1px solid #d2d2d2;
   color: #000;
@@ -42,12 +56,12 @@
   margin: 0;
   padding: 30px 0;
 }
-/* line 43, ../scss/sg-base.scss */
+/* line 55, ../scss/sg-base.scss */
 .sg-page-nav ul li {
   display: inline-block;
   margin-right: 40px;
 }
-/* line 48, ../scss/sg-base.scss */
+/* line 60, ../scss/sg-base.scss */
 .sg-page-nav ul li:first-child {
   -moz-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
   -o-transition: max-width 0.3s ease 0.3s, margin-right 0.3s ease 0.3s, visibility 0s linear 0.6s, opacity 0.3s ease 0s;
@@ -61,7 +75,7 @@
   position: relative;
   visibility: hidden;
 }
-/* line 56, ../scss/sg-base.scss */
+/* line 68, ../scss/sg-base.scss */
 .sg-page-nav ul li:first-child::after {
   -moz-transform: rotate(-45deg) translate(0, -50%);
   -ms-transform: rotate(-45deg) translate(0, -50%);
@@ -77,24 +91,37 @@
   top: 50%;
   width: 8px;
 }
-/* line 71, ../scss/sg-base.scss */
+/* line 83, ../scss/sg-base.scss */
 .sg-page-nav ul li a {
   color: inherit;
   text-decoration: none;
 }
-/* line 78, ../scss/sg-base.scss */
+/* line 90, ../scss/sg-base.scss */
 .sg-page-nav.pinned {
-  left: 105px;
+  left: 71px;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 1;
+  display: block;
 }
-/* line 85, ../scss/sg-base.scss */
+@media (min-width: 768px) {
+  /* line 90, ../scss/sg-base.scss */
+  .sg-page-nav.pinned {
+    left: 105px;
+  }
+}
+/* line 102, ../scss/sg-base.scss */
 .sg-show-nav .sg-page-nav.pinned {
-  left: 290px;
+  left: 255px;
 }
-/* line 91, ../scss/sg-base.scss */
+@media (min-width: 768px) {
+  /* line 102, ../scss/sg-base.scss */
+  .sg-show-nav .sg-page-nav.pinned {
+    left: 290px;
+  }
+}
+/* line 112, ../scss/sg-base.scss */
 .sg-page-nav.pinned ul li:first-child {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -107,7 +134,7 @@
   max-width: 200px;
   visibility: visible;
 }
-/* line 100, ../scss/sg-base.scss */
+/* line 121, ../scss/sg-base.scss */
 .sg-page-nav.pinned ul li:not(.sg-active):not(:first-child) {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;

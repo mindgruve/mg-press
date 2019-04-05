@@ -1,3 +1,8 @@
+overview:
+  - Overview:
+      - Logo
+      - Typefaces
+      - Colors
 typography:
   - Typography:
     - Headings
@@ -5,6 +10,8 @@ typography:
     - Footnote
     - Blockquote
     - Lists
+    - Subscript
+    - Superscript
 buttons:
   - Buttons:
      - Primary
@@ -12,3 +19,23 @@ buttons:
      - Text
      - Arrows
      - Pagers
+forms:
+  - Forms:
+      - Inputs
+      - Select
+      - Radio Buttons
+      - Checkboxes
+      - Submit Button
+alerts:
+  - Alerts:
+      - Default
+      - Warning
+      - Error
+      - Success
+modals:
+  - Modals:
+      - Modal
+pagination:
+  - Pagination:
+      - Pagination
+      - Pagers

@@ -1,0 +1,35 @@
+/* line 1, ../scss/sg-typefaces.scss */
+.sg-typefaces {
+  font-style: normal;
+  font-stretch: normal;
+}
+/* line 5, ../scss/sg-typefaces.scss */
+.sg-typefaces .sg-typeface {
+  margin-bottom: 50px;
+}
+/* line 8, ../scss/sg-typefaces.scss */
+.sg-typefaces .sg-typeface .sg-typeface-label {
+  text-transform: uppercase;
+}
+/* line 12, ../scss/sg-typefaces.scss */
+.sg-typefaces .sg-typeface p {
+  font-size: 12px;
+  margin-bottom: 30px;
+  font-family: Helvetica;
+}
+@media (min-width: 768px) {
+  /* line 1, ../scss/sg-typefaces.scss */
+  .sg-typefaces {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+  }
+  /* line 26, ../scss/sg-typefaces.scss */
+  .sg-typefaces .sg-typeface {
+    flex: 0 1 33.33%;
+    max-width: 33.33%;
+    padding-top: 30px;
+  }
+}
+
+/*# sourceMappingURL=sg-typefaces.css.map */

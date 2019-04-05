@@ -1,0 +1,34 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Success' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <div class="alert alert-success" role="alert">
+        <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}

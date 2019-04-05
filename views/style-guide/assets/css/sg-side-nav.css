@@ -1,8 +1,9 @@
 /* line 3, ../scss/sg-side-nav.scss */
 .flex-wrapper {
   display: flex;
+  min-height: calc(100vh - 250px);
 }
-/* line 6, ../scss/sg-side-nav.scss */
+/* line 7, ../scss/sg-side-nav.scss */
 .flex-wrapper .sg-side-nav {
   -moz-transition: flex-basis 0.3s ease;
   -o-transition: flex-basis 0.3s ease;
@@ -11,39 +12,45 @@
   flex: 0 0 56px;
   overflow: hidden;
 }
-/* line 11, ../scss/sg-side-nav.scss */
+/* line 12, ../scss/sg-side-nav.scss */
 .sg-show-nav .flex-wrapper .sg-side-nav {
   flex: 0 0 240px;
 }
-/* line 20, ../scss/sg-side-nav.scss */
+/* line 21, ../scss/sg-side-nav.scss */
 .flex-wrapper #content {
   flex: 0 1 auto;
-  padding: 0 50px;
+  padding: 0 15px;
   width: calc(100% - 56px);
   -moz-transition: width 0.3s ease;
   -o-transition: width 0.3s ease;
   -webkit-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
-/* line 26, ../scss/sg-side-nav.scss */
+/* line 27, ../scss/sg-side-nav.scss */
 .sg-show-nav .flex-wrapper #content {
   width: calc(100% - 240px);
 }
+@media (min-width: 768px) {
+  /* line 33, ../scss/sg-side-nav.scss */
+  .flex-wrapper #content {
+    padding: 0 50px;
+  }
+}
 
-/* line 34, ../scss/sg-side-nav.scss */
+/* line 41, ../scss/sg-side-nav.scss */
 .sg-side-nav {
   background-color: #f7f7f7;
   padding: 55px 0;
   position: relative;
 }
-/* line 44, ../scss/sg-side-nav.scss */
+/* line 51, ../scss/sg-side-nav.scss */
 .sg-side-nav .inner {
   overflow: hidden;
   width: 100%;
   padding: 0 56px;
   position: absolute;
 }
-/* line 51, ../scss/sg-side-nav.scss */
+/* line 58, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle {
   -moz-transition: clip-path 0.3s ease;
   -o-transition: clip-path 0.3s ease;
@@ -62,11 +69,11 @@
   width: 56px;
   z-index: 2;
 }
-/* line 67, ../scss/sg-side-nav.scss */
+/* line 74, ../scss/sg-side-nav.scss */
 .sg-show-nav .sg-side-nav .sg-nav-toggle {
   clip-path: polygon(0% 0, 150% 0%, 0 0, 0 100%);
 }
-/* line 71, ../scss/sg-side-nav.scss */
+/* line 78, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle .bar {
   background-color: #ffffff;
   display: block;
@@ -74,11 +81,11 @@
   margin: 0 auto 5px;
   width: 24px;
 }
-/* line 78, ../scss/sg-side-nav.scss */
+/* line 85, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle .bar:last-child {
   margin-bottom: 0;
 }
-/* line 84, ../scss/sg-side-nav.scss */
+/* line 91, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle-close {
   background-color: transparent;
   border: 0;
@@ -92,7 +99,7 @@
   width: 56px;
   z-index: 1;
 }
-/* line 97, ../scss/sg-side-nav.scss */
+/* line 104, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle-close::before, .sg-side-nav .sg-nav-toggle-close::after {
   -moz-transform: translate(-50%, -50%) rotate(45deg);
   -ms-transform: translate(-50%, -50%) rotate(45deg);
@@ -107,19 +114,19 @@
   top: 50%;
   width: 13px;
 }
-/* line 110, ../scss/sg-side-nav.scss */
+/* line 117, ../scss/sg-side-nav.scss */
 .sg-side-nav .sg-nav-toggle-close::after {
   height: 13px;
   width: 1px;
 }
-/* line 117, ../scss/sg-side-nav.scss */
+/* line 124, ../scss/sg-side-nav.scss */
 .sg-side-nav nav a {
   color: #000000;
   text-decoration: none;
   padding: 20px 0;
   display: block;
 }
-/* line 124, ../scss/sg-side-nav.scss */
+/* line 131, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul {
   padding: 0;
   margin: 0;
@@ -127,7 +134,7 @@
   font-size: 1.6rem;
   list-style-type: none;
 }
-/* line 134, ../scss/sg-side-nav.scss */
+/* line 141, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul > li > ul {
   font-weight: 400;
   padding-left: 5px;
@@ -135,7 +142,7 @@
   list-style-type: none;
   position: relative;
 }
-/* line 141, ../scss/sg-side-nav.scss */
+/* line 148, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul > li > ul::before {
   content: '';
   border-left: 1px solid #d2d2d2;
@@ -144,7 +151,7 @@
   bottom: 1em;
   position: absolute;
 }
-/* line 152, ../scss/sg-side-nav.scss */
+/* line 159, ../scss/sg-side-nav.scss */
 .sg-side-nav nav > ul > li > ul > li a {
   padding: 12px 20px;
 }

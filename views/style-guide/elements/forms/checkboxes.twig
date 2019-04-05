@@ -1,0 +1,99 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Checkboxes' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <div class="sg-row">
+        <div class="sg-col-sm-2">
+
+            <label class="control control--checkbox">Default
+                <input type="checkbox"/>
+                <div class="control__indicator"></div>
+            </label>
+
+        </div>
+        <div class="sg-col-sm-2">
+
+            <label class="control control--checkbox">Checked
+                <input type="checkbox" checked="checked"/>
+                <div class="control__indicator"></div>
+            </label>
+
+        </div>
+        <div class="sg-col-sm-2">
+
+            <label class="control control--checkbox">Hover
+                <input type="checkbox"/>
+                <div class="control__indicator"></div>
+            </label>
+
+        </div>
+        <div class="sg-col-sm-2">
+
+            <label class="control control--checkbox">Disabled
+                <input type="checkbox" disabled="disabled"/>
+                <div class="control__indicator"></div>
+            </label>
+
+        </div>
+        <div class="sg-col-sm-2">
+
+            <label class="control control--checkbox">Disabled & checked
+                <input type="checkbox" disabled="disabled" checked="checked"/>
+                <div class="control__indicator"></div>
+            </label>
+
+        </div>
+        <div class="sg-col-sm-2">
+
+
+        </div>
+    </div>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+{{ '{# Default #}' }}
+<label class="control control--checkbox">Default
+    <input type="checkbox"/>
+    <div class="control__indicator"></div>
+</label>
+
+{{ '{# Checked #}' }}
+<label class="control control--checkbox">Checked
+    <input type="checkbox" checked="checked"/>
+    <div class="control__indicator"></div>
+</label>
+
+{{ '{# Disabled #}' }}
+<label class="control control--checkbox">Disabled
+    <input type="checkbox" disabled="disabled"/>
+    <div class="control__indicator"></div>
+</label>
+
+{{ '{# Disabled and Checked #}' }}
+<label class="control control--checkbox">Disabled & checked
+    <input type="checkbox" disabled="disabled" checked="checked"/>
+    <div class="control__indicator"></div>
+</label>
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}

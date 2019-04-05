@@ -1,0 +1,45 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Pagers' %}
+
+{# Markup to render here #}
+{% set element_content %}
+{% include "include/pager.twig" with {
+    pagination: {
+        prev: { link: "/prev-link" },
+        next: { link: "/next-link" }
+    }
+} %}
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+{{ '{% include \'include/pager.twig\' with { pagination: post } %}
+
+{# OR #}' }}
+    {% include "include/pager.twig" with {
+        pagination: {
+            prev: { link: "/prev-link" },
+            next: { link: "/next-link" }
+        }
+    } %}
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}

@@ -1,0 +1,63 @@
+{#
+    vars:
+        template:           _self
+        container:          bool
+        headline:           string
+        element_content:    html
+        code:               html
+        notes:              html
+#}
+
+{% extends 'style-guide/layout/element-dynamic.twig' %}
+
+{% set template = _self %}
+{% set container = true %}
+{% set headline = 'Radio Buttons' %}
+
+{# Markup to render here #}
+{% set element_content %}
+    <form action="">
+        <div class="sg-row">
+
+            <div class="sg-col-sm-6">
+                <label class="control control--radio">First radio
+                    <input type="radio" name="radio"/>
+                    <div class="control__indicator"></div>
+                </label>
+                <label class="control control--radio">Second radio
+                    <input type="radio" name="radio"/>
+                    <div class="control__indicator"></div>
+                </label>
+
+            </div>
+
+            <div class="sg-col-sm-6">
+                <label class="control control--radio">Disabled
+                    <input type="radio" name="radio2" disabled="disabled"/>
+                    <div class="control__indicator"></div>
+                </label>
+                <label class="control control--radio">Disabled & checked
+                    <input type="radio" name="radio2" disabled="disabled" checked="checked"/>
+                    <div class="control__indicator"></div>
+                </label>
+            </div>
+
+
+        </div>
+    </form>
+{% endset %}
+
+
+{# Override Code Display Here - defaults to `element_content` #}
+{% set code %}
+<label class="control control--radio">First radio
+    <input type="radio" name="radio"/>
+    <div class="control__indicator"></div>
+</label>
+{% endset %}
+
+
+{# Add Notes Here #}
+{% set notes %}
+
+{% endset %}
