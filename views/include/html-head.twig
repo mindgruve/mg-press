@@ -20,11 +20,7 @@
     <link rel="author" href="{{ site.theme.link }}/humans.txt" />
     <link rel="pingback" href="{{ site.pingback_url }}" />
 
-    {# Styles #}
-    {% do add_stylesheet('style', theme.link ~ '/style.css', [], '1.0.0', 'all') %}
-
-    {# Scripts #}
-    {#{% do add_script_file('main', theme.link ~ '/assets/javascript/main.js', [], '1.0.0') %}#}
+    {% include 'include/header-assets.twig' %}
 
     {{function('wp_head')}}
 
