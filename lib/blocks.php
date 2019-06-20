@@ -45,19 +45,21 @@ if(!class_exists('MGPressBlocks')) {
                 self::$blockSettings = $blockSettings;
             }
 
-            if (isset($blockSettings['acf_pro'])
-                && $blockSettings['acf_pro']
-                && function_exists('acf_add_local_field_group')
+            if (function_exists('acf_add_local_field_group')
                 && function_exists('acf_render_field_wrap')
                 && function_exists('acf_get_field_groups'))
             {
                 self::getFlexibleContentTemplates();
-                add_action('init', array('MGPressBlocks', 'registerBlocks'));
-                //self::registerBlocks();
-                add_action('acf/render_field_group_settings', array('MGPressBlocks', 'blockGroupSettings'), 10, 1);
+                add_action('acf/render_field_group_settings', array('MGPressBlocks', 'blockGroupSettings'), 1, 1);
                 add_filter('acf/location/rule_values/post_type', array('MGPressBlocks', 'addAcfDummyBlockPostType'));
                 add_filter('timber_context', array('MGPressBlocks', 'addBlockTemplateToContext'));
                 add_action('admin_init', array('MGPressBlocks', 'hidePostEditor'));
+
+                if(is_admin() && @$_GET['post_type'] == 'acf-field-group') {
+                    add_action('init', array('MGPressBlocks', 'registerBlocks'), 10);
+                } else {
+                    add_action('init', array('MGPressBlocks', 'registerBlocks'), 1);
+                }
             }
         }
 
