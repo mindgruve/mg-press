@@ -1,0 +1,33 @@
+{#
+ # INCLUDE::HTML-HEAD
+ #
+ #  An HTML include used for the site's <head> tag.
+ #}
+
+<head>
+    <meta charset="{{ site.charset }}" />
+    <title>
+        {% if wp_title %}
+            {{ wp_title }} - {{ site.name }}
+        {% else %}
+            {{ site.name }}
+        {% endif %}
+    </title>
+    <meta name="description" content="{{ site.description }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="author" href="{{ site.theme.link }}/humans.txt" />
+    <link rel="pingback" href="{{ site.pingback_url }}" />
+
+    {# Styles #}
+    {% do add_stylesheet('style', theme.link ~ '/style.css', [], '1.0.0', 'all') %}
+
+    {# Scripts #}
+    {#{% do add_script_file('main', theme.link ~ '/assets/javascript/main.js', [], '1.0.0') %}#}
+
+    {{function('wp_head')}}
+
+    {% block head %}{% endblock %}
+
+</head>

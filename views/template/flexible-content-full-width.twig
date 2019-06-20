@@ -1,0 +1,31 @@
+{#
+ # TEMPLATE::FLEXIBLE-CONTENT-FULL-WIDTH
+ #
+ #  A detail template used as a page template option utilizing flexible content via ACF.
+ #
+ #  Template Name: Flexible Content Full Width
+ #}
+
+{# parent template #}
+{% extends 'layout/full-width.twig' %}
+
+{# declare content block #}
+{% block content %}
+
+    <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+
+        {% if post.get_field('body_content') %}
+
+            <section class="article-content">
+
+                {% for block in post.get_field('body_content') %}
+                    {% include 'block/'~block_templates[block.acf_fc_layout] %}
+                {% endfor %}
+
+            </section>
+
+        {% endif %}
+
+    </article>
+
+{% endblock %}

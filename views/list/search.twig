@@ -1,0 +1,21 @@
+{#
+ # LIST::SEARCH
+ #
+ #  A list template used for a displaying a list of Post summaries from search.
+ #}
+
+{# parent template #}
+{% extends 'layout/full-width.twig' %}
+
+{# declare content block #}
+{% block content %}
+
+    <div class="list-posts">
+        {% for post in posts %}
+            {% include ['summary/'~post.post_type~'.twig', 'summary/post.twig', 'summary/single.twig'] %}
+        {% endfor %}
+    </div>
+
+    {% include 'include/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+
+{% endblock %}

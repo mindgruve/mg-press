@@ -1,0 +1,37 @@
+{#
+ # INCLUDE::COMMENT
+ #
+ #  An HTML include used for a single comment.
+ #}
+
+<div class="blog-comment {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
+
+    <small class="comment-date">{{comment.date}}</small>
+    {% if comment.avatar %}
+        <div class="comment-avatar"><img src="{{ comment.avatar }}" /></div>
+    {% endif %}
+    <h5 class="comment-author">{{comment.author.name}} {{ __("says", 'theme') }}</h5>
+
+    <div class="comment-content">{{comment.comment_content|wpautop}}</div>
+
+    <section class="comment-box">
+
+        <!-- child comments -->
+        {% if comment.children %}
+            <h4>{{ __("Replies", 'theme') }}</h4>
+            <div class="comments">
+                <ul>
+                    {% for cmt in comment.children %}
+                        <li>{% include "include/comment.twig" with {comment:cmt} %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- comment form -->
+        {% if can_comment(post, comment) %}
+            {% include "form/comment.twig" %}
+        {% endif %}
+
+    </section>
+</div>

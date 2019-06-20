@@ -1,0 +1,46 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{ site.language_attributes }}> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{ site.language_attributes }}> <!--<![endif]-->
+
+    {# some plugins may need this hook #}
+    {% do function('do_action', 'get_header') %}
+
+    {# declare html_head block #}
+    {% block html_head %}
+        {% include 'include/html-head.twig' %}
+    {% endblock %}
+
+    <body class="{{body_class}}">
+
+        <div id="page">
+
+            <div id="wrapper">
+
+                {# declare header block #}
+                {% block header %}
+                    {% include 'include/header.twig' %}
+                {% endblock %}
+
+                {# declare layout block #}
+                {% block layout %}{% endblock %}
+
+            </div>
+            <!-- /#wrapper -->
+
+            {# some plugins may need this hook #}
+            {% do function('do_action', 'get_footer') %}
+
+            {# declare footer block #}
+            {% block footer %}
+                {% include 'include/footer.twig' %}
+            {% endblock %}
+
+        </div>
+        <!-- /#page -->
+
+        {{ function('wp_footer') }}
+
+    </body>
+</html>

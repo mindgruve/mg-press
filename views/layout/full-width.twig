@@ -1,0 +1,23 @@
+{#
+ # LAYOUT::FULL-WIDTH
+ #
+ #  A layout template used for full-width views.
+ #}
+
+{# parent template #}
+{% extends 'base.twig' %}
+
+{# declare layout block #}
+{% block layout %}
+
+    <div id="content" role="main">
+
+        {# declare content block #}
+        {% block content %}
+            <p>{{ __("Sorry, no content.", 'theme') }}</p>
+        {% endblock %}
+
+    </div>
+    <!-- end /#content -->
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{#
+ # INCLUDE::PAGER
+ #
+ #  An HTML include used for simple pagination.
+ #}
+
+<div class="pager-block">
+    <ul class="pager">
+
+        {% if pagination.prev %}
+            <li class="prev btn">
+                <a href="{{ pagination.prev.link }}">{{ __("Previous", 'theme') }}</a>
+            </li>
+        {% endif %}
+
+        {% if pagination.next %}
+            <li class="next btn">
+                <a href="{{ pagination.next.link }}">{{ __("Next", 'theme') }}</a>
+            </li>
+        {% endif %}
+
+    </ul>
+</div>

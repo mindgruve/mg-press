@@ -1,0 +1,7 @@
+<div class="form-control">
+    <label for="url">{{ __("URL", 'theme') }}</label>
+    <input name="url"
+        class="comment-form-url"
+        type="text"
+        value="{{ commenter.comment_author_url ? commenter.comment_author_url|e('html_attr') : '' }}"/>
+</div>

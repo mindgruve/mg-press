@@ -1,0 +1,70 @@
+{#
+ # FORM::COMMENT
+ #
+ #  A form include used for post comments. Replicates the functionality of comment_form()
+ #}
+
+{# initialize vars #}
+{% set commenter = function('wp_get_current_commenter') %}
+{% set user_identity = user ? user.name : '' %}
+
+{# include some templates as vars so we can run filters on them #}
+{% set logged_in_as %} {% include "form/comment/meta-logged-in-as.twig" %}{% endset %}
+{% set author_field %} {% include "form/comment/input-author.twig" %}     {% endset %}
+{% set email_field %}  {% include "form/comment/input-email.twig" %}      {% endset %}
+{% set url_field %}    {% include "form/comment/input-url.twig" %}        {% endset %}
+{% set comment_field %}{% include "form/comment/input-comment.twig" %}    {% endset %}
+{% set submit_field %} {% include "form/comment/input-submit.twig" %}     {% endset %}
+
+{# re-roder fields here if necessary #}
+{% set fields = {
+    'author' : author_field,
+    'email'  : email_field,
+    'url'    : url_field
+} %}
+
+{# start form output - logic mirrors wp-includes/comment-template.php #}
+{% do function('apply_filters', 'comment_form_default_fields', fields) %}
+{% do function('do_action', 'comment_form_before') %}
+{% do function('do_action', 'comment_form_before_id', comment.ID|default('0')) %}
+
+<div class="comment-form-block" id="comment-form-block-parent-comment-{{ comment.ID|default('0') }}">
+
+    <h3>{{ __("Add comment", 'theme') }}</h3>
+
+    <form class="comment-form" method="post" action="{{ site.wpurl~'/wp-comments-post.php' }}">
+
+        {% do function('do_action', 'comment_form_top') %}
+
+        {# show user links #}
+        {% if user %}
+            {{ function('apply_filters', 'comment_form_logged_in', logged_in_as, commenter, user_identity) }}
+            {% do function('do_action', 'comment_form_logged_in_after', commenter, user_identity) %}
+        {% endif %}
+
+        {% do function('do_action', 'comment_form_before_fields') %}
+
+        {# show author, email, url fields #}
+        {% if not user %}
+            {% for key,value in fields %}
+                {{ function('apply_filters', 'comment_form_field_' ~ key, value) }}
+            {% endfor %}
+        {% endif %}
+
+        {# show comment field #}
+        {{ function('apply_filters', 'comment_form_field_comment', comment_field) }}
+
+        {% do function('do_action', 'comment_form_after_fields') %}
+
+        <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
+        <input name="comment_parent" value="{{ comment.ID|default('0') }}" type="hidden">
+
+        {# show comment field #}
+        {{ function('apply_filters', 'comment_form_submit_field', submit_field) }}
+
+        {% do function('do_action', 'comment_form') %}
+
+    </form>
+</div>
+
+{% do function('do_action', 'comment_form_after') %}

@@ -1,5 +1,2 @@
-vendor/*
 .idea/*
-web/wp/*
-!web/wp/.gitkeep
-config/wpConfig.yml
+.sass-cache/*
