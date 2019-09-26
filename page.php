@@ -40,14 +40,14 @@ if (post_password_required($post->ID)) {
         'index.twig'
     );
 
-    // add template if being used
-    if (!is_null($templateName)) {
-        array_unshift($templates, 'template/' . $templateName . '.twig');
-    }
-
     // site front page template
     if (is_front_page()) {
         array_unshift($templates, 'detail/front-page.twig');
+    }
+
+    // add template if being used
+    if (!is_null($templateName)) {
+        array_unshift($templates, 'template/' . $templateName . '.twig');
     }
 }
 
